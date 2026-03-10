@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Bell, BarChart2, Table, Activity, ScrollText, MoreVertical, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import projectIcon from '../assets/Project-Icon.png';
-import releasesIcon from '../assets/Releases-Icon.png';
-import creditIcon from '../assets/Credit-Remaining-Icon.png';
+import projectIcon from '../../assets/Project-Icon.png';
+import releasesIcon from '../../assets/Releases-Icon.png';
+import creditIcon from '../../assets/Credit-Remaining-Icon.png';
 
 const chartData = [
   { date: '2025-12-01', html5: 12, metrHtml5: 8, metrPdf: 15 },
