@@ -1,24 +1,25 @@
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Dashboard from './pages/Dashboard'
-import DocMigration from './pages/DocMigration'
-import DocManager from './pages/DocManager'
-import DocEditor from './pages/DocEditor'
-import DocPublisher from './pages/DocPublisher'
+import Header from './components/Header/Header'
+import Dashboard from './components/Dashboard/Dashboard'
+import DocMigration from './components/DocMigration/DocMigration'
+import DocManager from './components/DocManager/DocManager'
+import DocManagerDetail from './components/DocManager/DocManagerDetail'
+import DocEditor from './components/DocEditor/DocEditor'
+import DocPublisher from './components/DocPublisher/DocPublisher'
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
+      <Header>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/doc-migration" element={<DocMigration />} />
           <Route path="/doc-manager" element={<DocManager />} />
+          <Route path="/doc-manager/:projectId" element={<DocManagerDetail />} />
           <Route path="/doc-editor" element={<DocEditor />} />
           <Route path="/doc-publisher" element={<DocPublisher />} />
         </Routes>
-      </Layout>
+      </Header>
     </BrowserRouter>
   )
 }

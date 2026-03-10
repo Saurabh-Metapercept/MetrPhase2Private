@@ -3,11 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Copyright } from 'lucide-react';
 import logo from '../../assets/metr-logo.png';
 
-interface LayoutProps {
+interface HeaderProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Header({ children }: HeaderProps) {
   const location = useLocation();
 
   const navItems = [
@@ -51,15 +51,6 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       <main>{children}</main>
-
-      <footer className="bg-white/50 border-t border-[#E2E8F0]/60 py-4 px-8">
-        <div className="flex justify-center items-center gap-1 text-sm text-[#45556C]">
-          <Copyright size={13} className="text-[#45556C]" />
-          <span>2025</span>
-          <span className="font-medium">Metapercept Technology Services LLP</span>
-          <span>All Rights Reserved</span>
-        </div>
-      </footer>
     </div>
   );
 }
