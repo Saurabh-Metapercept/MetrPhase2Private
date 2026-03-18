@@ -6,6 +6,7 @@ import DocManager from './components/DocManager/DocManager'
 import DocManagerDetail from './components/DocManager/DocManagerDetail'
 import DocEditor from './components/DocEditor/DocEditor'
 import DocPublisher from './components/DocPublisher/DocPublisher'
+import CompareBranches from './components/CompareBranches/CompareBranches'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/doc-manager/:projectId" element={<DocManagerDetail />} />
           <Route path="/doc-editor" element={<DocEditor />} />
           <Route path="/doc-publisher" element={<DocPublisher />} />
+          <Route path="/compare-branches" element={<CompareBranches />} />
         </Routes>
       </Header>
     </BrowserRouter>

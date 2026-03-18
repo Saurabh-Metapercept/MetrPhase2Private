@@ -87,7 +87,10 @@ export default function DocManagerDetail() {
         </div>
         <button className="text-[#5F4050] text-sm font-medium">+ Create new branch</button>
         <div className="ml-auto flex gap-3">
-          <button className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]">
+          <button 
+            onClick={() => navigate('/compare-branches')}
+            className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]"
+          >
             <GitCompare size={16} />
             Compare branches
           </button>

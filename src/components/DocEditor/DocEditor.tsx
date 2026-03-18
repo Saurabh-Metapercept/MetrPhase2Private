@@ -1,9 +1,15 @@
 import { useState } from "react";
 import buttonIcon from "../../assets/Button.png";
+import DefaultEditor from "./DefaultEditor";
 
 export default function DocEditor(): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<string>("HTML-Migration");
   const [selectedBranch, setSelectedBranch] = useState<string>("main");
+  const [showEditor, setShowEditor] = useState<boolean>(false);
+
+  if (showEditor) {
+    return <DefaultEditor />;
+  }
 
   return (
     <div className="py-11 flex flex-col items-center">
@@ -54,7 +60,10 @@ export default function DocEditor(): JSX.Element {
         {/* Buttons */}
         <div className="flex justify-center items-center gap-4">
 
-          <button className="bg-[#5F4050] text-white px-7 h-[42px] rounded-md text-[14px] font-medium hover:bg-[#4a3240] transition">
+          <button 
+            onClick={() => setShowEditor(true)}
+            className="bg-[#5F4050] text-white px-7 h-[42px] rounded-md text-[14px] font-medium hover:bg-[#4a3240] transition"
+          >
             Open with default editor
           </button>
 
