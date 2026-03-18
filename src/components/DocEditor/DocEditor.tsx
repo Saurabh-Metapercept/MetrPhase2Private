@@ -1,69 +1,185 @@
 import { useState } from "react";
-import buttonIcon from "../../assets/Button.png";
+import oxygenIcon from "../../assets/Button.png";
+import DefaultEditor from "./DefaultEditor";
 
 export default function DocEditor(): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<string>("HTML-Migration");
   const [selectedBranch, setSelectedBranch] = useState<string>("main");
+  const [showEditor, setShowEditor] = useState<boolean>(false);
+
+  if (showEditor) {
+    return <DefaultEditor />;
+  }
 
   return (
     <div className="py-11 flex flex-col items-center">
 
       {/* TOP SECTION */}
       <div className="w-full max-w-[820px] mb-6">
-        <h1 className="font-bold text-[28px] text-[#5F4050] mb-1">DocEditor</h1>
-        <p className="text-[15px] text-[#64748B]">
+        <h1
+          style={{
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: 700,
+            fontSize: "24px",
+            lineHeight: "150%",
+            color: "#5F4050",
+            marginBottom: "4px",
+          }}
+        >
+          DocEditor
+        </h1>
+        <p
+          style={{
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "20px",
+            lineHeight: "20px",
+            letterSpacing: "-0.150391px",
+            color: "#364153",
+            margin: 1,
+          }}
+        >
           Edit and release your documentation using DocEditor
         </p>
       </div>
 
       {/* FORM CARD */}
-      <div className="bg-white border border-[#E2E8F0] rounded-lg shadow-sm w-[820px] px-14 py-10">
-
-        <h2 className="text-[16px] font-normal text-[#1E293B] mb-6">
+      <div
+        style={{
+          boxSizing: "border-box",
+          width: "672px",
+          background: "#FFFFFF",
+          border: "1px solid #E5E7EB",
+          borderRadius: "4px",
+          padding: "25px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0px",
+        }}
+      >
+        {/* Add details to proceed with DocEditor */}
+        <p
+          style={{
+            fontFamily: "Inter",
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight: "20px",
+            letterSpacing: "-0.150391px",
+            color: "#364153",
+            margin: "0 0 20px 0",
+          }}
+        >
           Add details to proceed with DocEditor
-        </h2>
+        </p>
 
         {/* Select Project */}
-        <div className="mb-5">
-          <label className="block text-[14px] font-normal text-[#1E293B] mb-2">
-            Select Project<span className="text-red-500">*</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "16px" }}>
+          <label
+            style={{
+              fontFamily: "Inter",
+              fontWeight: 500,
+              fontSize: "14px",
+              lineHeight: "20px",
+              letterSpacing: "-0.150391px",
+              color: "#364153",
+            }}
+          >
+            Select Project<span style={{ color: "red" }}>*</span>
           </label>
-
           <input
             type="text"
             value={selectedProject}
             onChange={(e) => setSelectedProject(e.target.value)}
-            className="w-full h-[44px] px-4 border border-[#CBD5E1] rounded-md text-[14px] text-[#1E293B] focus:outline-none focus:border-[#5F4050]"
+            style={{
+              boxSizing: "border-box",
+              padding: "8px 12px",
+              width: "100%",
+              height: "38px",
+              background: "#FFFFFF",
+              border: "1px solid #D1D5DC",
+              borderRadius: "4px",
+              fontFamily: "Inter",
+              fontWeight: 400,
+              fontSize: "14px",
+              lineHeight: "20px",
+              letterSpacing: "-0.150391px",
+              color: "#1E2939",
+              outline: "none",
+            }}
           />
         </div>
 
         {/* Select Branch */}
-        <div className="mb-10">
-          <label className="block text-[14px] font-normal text-[#1E293B] mb-2">
-            Select Branch<span className="text-red-500">*</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "24px" }}>
+          <label
+            style={{
+              fontFamily: "Inter",
+              fontWeight: 500,
+              fontSize: "14px",
+              lineHeight: "20px",
+              letterSpacing: "-0.150391px",
+              color: "#364153",
+            }}
+          >
+            Select Branch<span style={{ color: "red" }}>*</span>
           </label>
-
           <input
             type="text"
             value={selectedBranch}
             onChange={(e) => setSelectedBranch(e.target.value)}
-            className="w-full h-[44px] px-4 border border-[#CBD5E1] rounded-md text-[14px] text-[#1E293B] focus:outline-none focus:border-[#5F4050]"
+            style={{
+              boxSizing: "border-box",
+              padding: "8px 12px",
+              width: "100%",
+              height: "38px",
+              background: "#FFFFFF",
+              border: "1px solid #D1D5DC",
+              borderRadius: "4px",
+              fontFamily: "Inter",
+              fontWeight: 400,
+              fontSize: "14px",
+              lineHeight: "20px",
+              letterSpacing: "-0.150391px",
+              color: "#1E2939",
+              outline: "none",
+            }}
           />
         </div>
 
-        {/* Buttons */}
-        <div className="flex justify-center items-center gap-4">
-
-          <button className="bg-[#5F4050] text-white px-7 h-[42px] rounded-md text-[14px] font-medium hover:bg-[#4a3240] transition">
+        {/* Buttons row - right aligned */}
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "8px" }}>
+          <button
+            onClick={() => setShowEditor(true)}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "6px 13px",
+              gap: "10px",
+              width: "185px",
+              height: "37px",
+              background: "#5F4050",
+              borderRadius: "4px",
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "Inter",
+              fontWeight: 500,
+              fontSize: "14px",
+              lineHeight: "20px",
+              letterSpacing: "-0.150391px",
+              color: "#FFFFFF",
+            }}
+          >
             Open with default editor
           </button>
-
           <img
-            src={buttonIcon}
+            src={oxygenIcon}
             alt="Open with OxygenXML"
-            className="h-[42px] cursor-pointer"
+            style={{ height: "37px", cursor: "pointer" }}
           />
-
         </div>
       </div>
     </div>
