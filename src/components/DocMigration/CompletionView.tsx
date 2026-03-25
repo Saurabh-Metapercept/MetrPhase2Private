@@ -25,16 +25,16 @@ export default function CompletionView({ onGithubClick }: CompletionViewProps) {
         <p className="text-base text-[#314158]">Your conversion is complete! Thank you for using our service.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white rounded-xl border border-[#E2E8F0] p-5">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <button onClick={onGithubClick} className="cursor-pointer">
+              <button onClick={onGithubClick} className="cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <img src={githubIcon} alt="GitHub" className="w-5 h-5" />
               </button>
               <h3 className="font-bold text-base text-[#314158]">DITA Output</h3>
             </div>
-            <button className="bg-[#16A34A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm">
+            <button className="bg-[#16A34A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm min-h-[44px]">
               <Download size={16} />
               Download
             </button>

@@ -12,7 +12,7 @@ export default function DocEditor(): JSX.Element {
   }
 
   return (
-    <div className="py-11 flex flex-col items-center">
+    <div className="py-6 sm:py-11 flex flex-col items-center px-4">
 
       {/* TOP SECTION */}
       <div className="w-full max-w-[820px] mb-6">
@@ -49,7 +49,8 @@ export default function DocEditor(): JSX.Element {
       <div
         style={{
           boxSizing: "border-box",
-          width: "672px",
+          width: "100%",
+          maxWidth: "672px",
           background: "#FFFFFF",
           border: "1px solid #E5E7EB",
           borderRadius: "4px",
@@ -149,7 +150,7 @@ export default function DocEditor(): JSX.Element {
         </div>
 
         {/* Buttons row - right aligned */}
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
           <button
             onClick={() => setShowEditor(true)}
             style={{
@@ -160,7 +161,7 @@ export default function DocEditor(): JSX.Element {
               padding: "6px 13px",
               gap: "10px",
               width: "185px",
-              height: "37px",
+              height: "44px",
               background: "#5F4050",
               borderRadius: "4px",
               border: "none",
@@ -178,7 +179,7 @@ export default function DocEditor(): JSX.Element {
           <img
             src={oxygenIcon}
             alt="Open with OxygenXML"
-            style={{ height: "37px", cursor: "pointer" }}
+            style={{ height: "44px", cursor: "pointer", maxWidth: "100%" }}
           />
         </div>
       </div>

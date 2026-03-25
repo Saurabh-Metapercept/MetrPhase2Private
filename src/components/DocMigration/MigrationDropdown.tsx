@@ -13,13 +13,13 @@ export default function MigrationDropdown({ selectedType, dropdownOpen, onToggle
     <div className="relative mb-6">
       <button
         onClick={onToggle}
-        className="w-[260px] h-[42px] bg-[#F5E6ED] rounded-lg px-[18px] py-[11px] flex items-center justify-between text-[#313144] text-base"
+        className="w-full sm:w-[260px] h-[42px] bg-[#F5E6ED] rounded-lg px-[18px] py-[11px] flex items-center justify-between text-[#313144] text-base min-h-[44px]"
       >
         {selectedType}
         <ChevronDown size={16} className="text-[#313144]" />
       </button>
       {dropdownOpen && (
-        <div className="absolute top-[42px] left-0 w-[260px] bg-white border border-[#E2E8F0] rounded-b-lg shadow-lg z-20">
+        <div className="absolute top-[42px] left-0 w-full sm:w-[260px] bg-white border border-[#E2E8F0] rounded-b-lg shadow-lg z-20">
           {migrationOptions.map((option) => (
             <div
               key={option}

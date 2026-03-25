@@ -14,7 +14,7 @@ export default function UploadSection({ selectedFile, policyChecked, onFileSelec
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="bg-white rounded-2xl border border-[rgba(226,232,240,0.6)] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)] p-[33px]">
+    <div className="bg-white rounded-2xl border border-[rgba(226,232,240,0.6)] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)] p-5 sm:p-[33px]">
       <label className="block text-base text-[#0F172B] mb-4">
         Upload input source file <span className="text-[#FF2056]">*</span>
       </label>
@@ -22,7 +22,7 @@ export default function UploadSection({ selectedFile, policyChecked, onFileSelec
       {!selectedFile ? (
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="h-[228px] border-2 border-dashed border-[#CAD5E2] rounded-2xl flex flex-col items-center justify-center cursor-pointer p-[50px]"
+          className="h-[228px] border-2 border-dashed border-[#CAD5E2] rounded-2xl flex flex-col items-center justify-center cursor-pointer p-6 sm:p-[50px]"
         >
           <div className="w-16 h-16 rounded-full bg-[#FFEDD4] flex items-center justify-center mb-4">
             <Upload size={32} className="text-[#F54900]" />
@@ -67,14 +67,14 @@ export default function UploadSection({ selectedFile, policyChecked, onFileSelec
           <div className="flex justify-end gap-3">
             <button
               onClick={onReset}
-              className="px-6 py-2 border border-[#D1D5DB] rounded-lg text-[#314158] bg-white"
+              className="px-6 py-2 border border-[#D1D5DB] rounded-lg text-[#314158] bg-white min-h-[44px]"
             >
               Reset
             </button>
             <button
               onClick={onUpload}
               disabled={!policyChecked}
-              className="px-6 py-2 bg-[#2563EB] text-white rounded-lg disabled:opacity-50"
+              className="px-6 py-2 bg-[#2563EB] text-white rounded-lg disabled:opacity-50 min-h-[44px]"
             >
               Upload
             </button>

@@ -44,8 +44,8 @@ export default function PipelineStages({ currentStage }: PipelineStagesProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-[rgba(226,232,240,0.6)] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)] p-[33px] mb-6">
-      <div className="relative">
+    <div className="bg-white rounded-2xl border border-[rgba(226,232,240,0.6)] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)] p-4 sm:p-[33px] mb-6 overflow-x-auto">
+      <div className="relative min-w-[480px]">
         <div className="flex items-start justify-between">
           {stages.map((stage) => {
             const style = getStageStyle(stage.id);
@@ -53,7 +53,7 @@ export default function PipelineStages({ currentStage }: PipelineStagesProps) {
             const isCompleted = stage.id < currentStage;
             
             return (
-              <div key={stage.id} className="flex flex-col items-center" style={{ width: '172.84px' }}>
+              <div key={stage.id} className="flex flex-col items-center flex-1">
                 <div
                   className={`${style.size} rounded-full flex items-center justify-center relative z-10`}
                   style={{ background: style.bg }}

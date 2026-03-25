@@ -35,8 +35,8 @@ const releases = [
 ];
 
 const MetricCard = ({ bgColor, innerBg, icon, label, value, valueColor }: any) => (
-  <div className={`w-[268px] h-[91px] ${bgColor} rounded-[10px] relative overflow-hidden flex items-center`}>
-    <div className={`absolute left-0 w-[193px] h-full ${innerBg} rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10`}>
+  <div className={`w-full sm:w-[268px] h-[91px] ${bgColor} rounded-[10px] relative overflow-hidden flex items-center`}>
+    <div className={`absolute left-0 w-[72%] sm:w-[193px] h-full ${innerBg} rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10`}>
       <span className="font-bold text-base text-[#0A0A0A]">{label}</span>
       <img src={icon} alt={label} className="w-[31px] h-[31px]" />
     </div>
@@ -45,7 +45,7 @@ const MetricCard = ({ bgColor, innerBg, icon, label, value, valueColor }: any) =
 );
 
 const NotificationsCard = () => (
-  <div className="w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative">
+  <div className="w-full sm:w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative">
     <div className="absolute top-2 right-2 flex items-center gap-0.5">
       <Bell size={16} className="text-[#314158]" />
       <span className="bg-[#90A1B9] text-white text-[10px] rounded-full px-1">3</span>
@@ -60,14 +60,14 @@ export default function Dashboard() {
   const [viewMode, setViewMode] = useState<'chart' | 'table'>('chart');
 
   return (
-    <div className="px-40 py-11">
+    <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
       <h1 className="font-bold text-2xl text-[#5F4050] mb-6">Dashboard</h1>
 
-      <div className="flex gap-5 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:flex xl:flex-row gap-4 sm:gap-5 mb-6">
         <MetricCard bgColor="bg-[#3EB33E]" innerBg="bg-[#9AF1BA]" icon={projectIcon} label="Projects" value="3" valueColor="text-[#FAEBFF]" />
         <MetricCard bgColor="bg-[#C470E0]" innerBg="bg-[#F2CCFF]" icon={releasesIcon} label="Releases" value="14" valueColor="text-[#FAEBFF]" />
-        <div className="w-[276px] h-[93px] bg-[#FFB153] rounded-[10px] relative overflow-hidden">
-          <div className="absolute left-0 w-[199px] h-full bg-[#FFC989] rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10">
+        <div className="w-full xl:w-[276px] h-[93px] bg-[#FFB153] rounded-[10px] relative overflow-hidden">
+          <div className="absolute left-0 w-[72%] sm:w-[199px] h-full bg-[#FFC989] rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10">
             <span className="font-bold text-base text-[#0A0A0A]">Credits Remaining</span>
             <img src={creditIcon} alt="Credits" className="w-[31px] h-[31px]" />
           </div>
@@ -78,10 +78,10 @@ export default function Dashboard() {
         <NotificationsCard />
       </div>
 
-      <div className="bg-white border border-[#E2E8F0]/60 rounded-2xl p-6 mb-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-white border border-[#E2E8F0]/60 rounded-2xl p-4 sm:p-6 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <span className="text-base font-medium text-[#0F172B]">Releases by Output Format</span>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-[#FF6900]"></div>
@@ -97,11 +97,11 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="bg-white/50 border border-[#E2E8F0]/50 rounded-[10px] p-1 flex gap-1">
-              <button onClick={() => setViewMode('chart')} className={`${viewMode === 'chart' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1`}>
+              <button onClick={() => setViewMode('chart')} className={`${viewMode === 'chart' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1 min-h-[36px]`}>
                 <BarChart2 size={14} />
                 Chart
               </button>
-              <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1`}>
+              <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1 min-h-[36px]`}>
                 <Table size={14} />
                 Table
               </button>
@@ -121,8 +121,8 @@ export default function Dashboard() {
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <div className="bg-[#FFFFFF66] rounded-2xl p-6">
-            <table className="w-full border-collapse">
+          <div className="bg-[#FFFFFF66] rounded-2xl p-2 sm:p-6 overflow-x-auto">
+            <table className="w-full border-collapse min-w-[400px]">
               <thead>
                 <tr className="border-b border-[#E2E8F0]">
                   <th className="font-bold text-sm text-[#314158] px-4 py-3 text-left">DATE</th>
@@ -154,18 +154,18 @@ export default function Dashboard() {
 
       <div className="bg-white rounded-2xl border border-[#E2E8F0]/60">
         <div className="border-b border-[#E2E8F0] flex">
-          <button onClick={() => setActiveTab('activities')} className={`flex-1 ${activeTab === 'activities' ? 'text-[#5F4050] border-b-2 border-[#5F4050]' : 'text-[#45556C]'} text-base py-4 text-center flex items-center justify-center gap-1.5`}>
+          <button onClick={() => setActiveTab('activities')} className={`flex-1 ${activeTab === 'activities' ? 'text-[#5F4050] border-b-2 border-[#5F4050]' : 'text-[#45556C]'} text-sm sm:text-base py-4 text-center flex items-center justify-center gap-1.5 min-h-[44px]`}>
             <Activity size={15} />
-            Recent Activities
+            <span className="hidden sm:inline">Recent </span>Activities
           </button>
-          <button onClick={() => setActiveTab('release')} className={`flex-1 ${activeTab === 'release' ? 'text-[#5F4050] border-b-2 border-[#5F4050]' : 'text-[#45556C]'} text-base py-4 text-center flex items-center justify-center gap-1.5`}>
+          <button onClick={() => setActiveTab('release')} className={`flex-1 ${activeTab === 'release' ? 'text-[#5F4050] border-b-2 border-[#5F4050]' : 'text-[#45556C]'} text-sm sm:text-base py-4 text-center flex items-center justify-center gap-1.5 min-h-[44px]`}>
             <ScrollText size={15} />
-            Recent Release Log
+            <span className="hidden sm:inline">Recent </span>Release Log
           </button>
         </div>
-        <div className="px-6 pb-6">
+        <div className="px-2 sm:px-6 pb-6 overflow-x-auto">
           {activeTab === 'activities' ? (
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse min-w-[600px]">
               <thead>
                 <tr>
                   <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Project Name</th>
@@ -185,7 +185,7 @@ export default function Dashboard() {
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.date}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.time}</td>
                     <td className="px-4 py-3">
-                      <button className="w-7 h-7 rounded-lg border border-[#E2E8F0] flex items-center justify-center hover:bg-gray-50">
+                      <button className="w-8 h-8 min-w-[44px] min-h-[44px] rounded-lg border border-[#E2E8F0] flex items-center justify-center hover:bg-gray-50">
                         <MoreVertical size={14} className="text-[#45556C]" />
                       </button>
                     </td>
@@ -194,7 +194,7 @@ export default function Dashboard() {
               </tbody>
             </table>
           ) : (
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse min-w-[700px]">
               <thead>
                 <tr>
                   <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Release Title</th>

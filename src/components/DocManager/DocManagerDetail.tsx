@@ -67,9 +67,9 @@ export default function DocManagerDetail() {
   };
 
   return (
-    <div className="px-40 py-11">
+    <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={() => navigate('/doc-manager')} className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-lg">
+        <button onClick={() => navigate('/doc-manager')} className="w-10 h-10 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-gray-100 rounded-lg">
           <ArrowLeft size={20} className="text-[#5F4050]" />
         </button>
         <div>
@@ -78,30 +78,30 @@ export default function DocManagerDetail() {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 mb-6">
-        <div className="relative">
-          <select className="w-[200px] h-10 px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#64748B] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]">
+      <div className="flex flex-wrap items-center gap-3 mb-6">
+        <div className="relative w-full sm:w-auto">
+          <select className="w-full sm:w-[200px] h-10 px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#64748B] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]">
             <option>Choose a branch</option>
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] pointer-events-none" size={16} />
         </div>
-        <button className="text-[#5F4050] text-sm font-medium">+ Create new branch</button>
-        <div className="ml-auto flex gap-3">
+        <button className="text-[#5F4050] text-sm font-medium min-h-[44px]">+ Create new branch</button>
+        <div className="flex flex-wrap gap-3 sm:ml-auto">
           <button 
             onClick={() => navigate('/compare-branches')}
-            className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]"
+            className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3] min-h-[44px]"
           >
             <GitCompare size={16} />
             Compare branches
           </button>
-          <button className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]">
+          <button className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3] min-h-[44px]">
             <Download size={16} />
             Download Source
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-[#FFF0F7] rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-4">
             <Folder className="text-[#5F4050]" size={20} />

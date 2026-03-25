@@ -15,9 +15,9 @@ export default function DefaultEditor() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row md:h-screen">
       {/* LEFT PANEL - File Tree */}
-      <div className="w-[200px] bg-white border-r border-[#E5E7EB] flex flex-col">
+      <div className="w-full md:w-[200px] bg-white border-b md:border-b-0 md:border-r border-[#E5E7EB] flex flex-col md:max-h-screen">
         {/* Header */}
         <div className="h-[42px] bg-[#F5E6ED] flex flex-col items-center justify-center">
           <div className="text-[14px] font-bold text-[#5F4050] leading-[150%]">DITAMAP</div>
@@ -25,7 +25,7 @@ export default function DefaultEditor() {
         </div>
 
         {/* File Tree */}
-        <div className="flex-1 overflow-y-auto pt-1">
+        <div className="flex-1 overflow-y-auto pt-1 max-h-[200px] md:max-h-none">
           <TreeItem level={0} label="Docx-Migration" isFolder expanded={expandedFolders.has('root')} onToggle={() => toggleFolder('root')}>
             <TreeItem level={1} label="media" isFolder />
           </TreeItem>
@@ -64,9 +64,9 @@ export default function DefaultEditor() {
       </div>
 
       {/* CENTER PANEL - Editor */}
-      <div className="flex-1 flex flex-col bg-white">
+      <div className="flex-1 flex flex-col bg-white min-h-[400px] md:min-h-0">
         {/* Toolbar */}
-        <div className="h-[48px] border-b border-[#E5E7EB] flex items-center px-4 gap-2">
+        <div className="h-[48px] border-b border-[#E5E7EB] flex items-center px-4 gap-1 sm:gap-2 overflow-x-auto">
           <button className="p-1 hover:bg-gray-100 rounded"><Undo size={16} className="text-[#6A7282]" /></button>
           <button className="p-1 hover:bg-gray-100 rounded"><Table size={16} className="text-[#6A7282]" /></button>
           <button className="p-1 hover:bg-gray-100 rounded"><Bold size={16} className="text-[#6A7282]" /></button>
@@ -105,7 +105,7 @@ export default function DefaultEditor() {
       </div>
 
       {/* RIGHT PANEL - Properties */}
-      <div className="w-[200px] bg-white border-l border-[#E5E7EB] flex flex-col">
+      <div className="w-full md:w-[200px] bg-white border-t md:border-t-0 md:border-l border-[#E5E7EB] flex flex-col">
         {/* Tab Bar */}
         <div className="h-[64px] border-b border-[#E5E7EB] px-2 pt-2">
           <div className="flex flex-col gap-1">
@@ -124,11 +124,11 @@ export default function DefaultEditor() {
         </div>
 
         {/* Action Buttons */}
-        <div className="h-[35px] border-b border-[#F3F4F6] flex items-center gap-3 px-3">
-          <button className="bg-[#F5E6ED] rounded-sm px-2 py-1 text-[12px] font-medium text-[#5F4050]">
+        <div className="h-auto min-h-[44px] border-b border-[#F3F4F6] flex items-center gap-2 px-3 py-2 flex-wrap">
+          <button className="bg-[#F5E6ED] rounded-sm px-2 py-1 text-[12px] font-medium text-[#5F4050] min-h-[32px]">
             Add Child Tag
           </button>
-          <button className="bg-[#F5E6ED] rounded px-2 py-1 text-[12px] font-medium text-[#4A5565]">
+          <button className="bg-[#F5E6ED] rounded px-2 py-1 text-[12px] font-medium text-[#4A5565] min-h-[32px]">
             Add Attribute
           </button>
         </div>
@@ -169,7 +169,7 @@ function TreeItem({ level, label, isFolder, isFile, expanded, onToggle, children
   return (
     <>
       <div 
-        className="flex items-center h-[18.5px] w-full hover:bg-gray-50 cursor-pointer"
+        className="flex items-center min-h-[36px] w-full hover:bg-gray-50 cursor-pointer"
         style={{ paddingLeft: `${level * 14 + 4}px` }}
         onClick={onToggle}
       >

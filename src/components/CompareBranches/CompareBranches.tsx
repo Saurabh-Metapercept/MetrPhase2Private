@@ -1,7 +1,19 @@
 import { useState } from 'react';
 import { ArrowLeft, GitBranch, ArrowLeftRight, Info, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { mockFiles, generateDiffContent } from './mockData';
+const mockFiles = [
+  { path: 'src/index.ts', additions: 5, deletions: 2 },
+  { path: 'src/utils.ts', additions: 3, deletions: 1 },
+];
+
+function generateDiffContent() {
+  return [
+    { type: 'normal' as const, lineNum: 1, content: 'const x = 1;' },
+    { type: 'remove' as const, lineNum: 2, content: 'const y = 2;' },
+    { type: 'add' as const, lineNum: 2, content: 'const y = 42;' },
+    { type: 'normal' as const, lineNum: 3, content: 'export { x, y };' },
+  ];
+}
 import unifiedViewIcon from '../../assets/unified-view-icon.png';
 import splitViewIcon from '../../assets/split-view-icon.png';
 
@@ -15,6 +27,7 @@ export default function CompareBranches() {
   const [compareState, setCompareState] = useState<CompareState>('idle');
   const [viewMode, setViewMode] = useState<ViewMode>('unified');
   const [expandedFiles, setExpandedFiles] = useState<Set<string>>(new Set());
+
 
   const handleCompare = () => {
     if (baseBranch === targetBranch) return;
@@ -35,11 +48,11 @@ export default function CompareBranches() {
   };
 
   return (
-    <div className="px-40 py-11 bg-gray-50 min-h-screen">
+    <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11 bg-gray-50 min-h-screen">
       <div className="flex items-center gap-3 mb-8">
         <button
           onClick={() => navigate(-1)}
-          className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-lg"
+          className="w-10 h-10 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-gray-100 rounded-lg"
         >
           <ArrowLeft size={20} className="text-[#5F4050]" />
         </button>
@@ -49,21 +62,21 @@ export default function CompareBranches() {
       {/* ── Compare box ── */}
       <div className="flex justify-center mb-8">
         <div
-          className="bg-white border border-[rgba(226,232,240,0.6)] rounded-[14px] w-[857.7px] h-[74px] flex items-center justify-center px-6"
+          className="bg-white border border-[rgba(226,232,240,0.6)] rounded-[14px] w-full max-w-[857.7px] flex items-center justify-center px-4 sm:px-6 py-4 sm:h-[74px]"
           style={{
             boxShadow: '0px 1px 3px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1)',
           }}
         >
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
 
             {/* Base */}
             <div className="flex items-center gap-2">
               <label className="text-sm font-medium text-[#0F172A] whitespace-nowrap">Base:</label>
-              <div className="relative">
+              <div className="relative flex-1 sm:flex-none">
                 <select
                   value={baseBranch}
                   onChange={(e) => setBaseBranch(e.target.value)}
-                  className="w-[200px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
+                  className="w-full sm:w-[200px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
                 >
                   <option value="main">main</option>
                   <option value="dev">dev</option>
@@ -74,16 +87,16 @@ export default function CompareBranches() {
             </div>
 
             {/* Arrow */}
-            <ArrowLeftRight size={20} className="text-[#64748B] shrink-0" />
+            <ArrowLeftRight size={20} className="text-[#64748B] shrink-0 hidden sm:block" />
 
             {/* Target */}
             <div className="flex items-center gap-2">
               <label className="text-sm font-medium text-[#0F172A] whitespace-nowrap">Target:</label>
-              <div className="relative">
+              <div className="relative flex-1 sm:flex-none">
                 <select
                   value={targetBranch}
                   onChange={(e) => setTargetBranch(e.target.value)}
-                  className="w-[240px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
+                  className="w-full sm:w-[240px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
                 >
                   <option value="test_1">test_1</option>
                   <option value="test_2">test_2</option>
@@ -97,7 +110,7 @@ export default function CompareBranches() {
             <button
               onClick={handleCompare}
               disabled={baseBranch === targetBranch}
-              className="w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] flex items-center justify-center gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+              className="w-full sm:w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] flex items-center justify-center gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap min-h-[44px]"
             >
               <GitBranch size={16} />
               Compare
@@ -130,7 +143,7 @@ export default function CompareBranches() {
             <h3 className="text-sm text-[#64748B]">Files changed ({mockFiles.length})</h3>
             <button
               onClick={() => setViewMode(viewMode === 'unified' ? 'split' : 'unified')}
-              className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#314158] hover:bg-gray-50 flex items-center gap-2"
+              className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#314158] hover:bg-gray-50 flex items-center gap-2 min-h-[44px]"
             >
               <img
                 src={viewMode === 'unified' ? splitViewIcon : unifiedViewIcon}
@@ -147,7 +160,7 @@ export default function CompareBranches() {
                 <div className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 border-b border-[#E2E8F0] last:border-b-0">
                   <button
                     onClick={() => toggleFileExpand(file.path)}
-                    className="text-sm text-[#0EA5E9] hover:underline text-left flex-1 truncate mr-4"
+                    className="text-sm text-[#0EA5E9] hover:underline text-left flex-1 truncate mr-4 min-h-[44px] flex items-center"
                   >
                     {file.path}
                   </button>
@@ -183,13 +196,13 @@ function UnifiedDiffView({ baseBranch, targetBranch }: { baseBranch: string; tar
   const diff = generateDiffContent();
 
   return (
-    <div className="p-4">
+    <div className="p-2 sm:p-4">
       <div className="bg-white border border-[#D0D7DE] rounded-lg overflow-hidden">
         <div className="bg-[#F6F8FA] px-3 py-2 border-b border-[#D0D7DE] font-semibold text-xs flex items-center gap-2">
           <ChevronDown size={14} />
           <span>{baseBranch}...{targetBranch}</span>
         </div>
-        <div className="font-mono text-xs">
+        <div className="font-mono text-xs overflow-x-auto">
           {diff.map((line, index) => (
             <div
               key={index}
@@ -231,8 +244,8 @@ function SplitDiffView({ baseBranch, targetBranch }: { baseBranch: string; targe
   const diff = generateDiffContent();
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 gap-2">
+    <div className="p-4 overflow-x-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 min-w-0">
         <div className="bg-white border border-[#D0D7DE] rounded-lg overflow-hidden">
           <div className="bg-[#F6F8FA] px-3 py-2 border-b border-[#D0D7DE] font-semibold text-xs">
             Base: {baseBranch}

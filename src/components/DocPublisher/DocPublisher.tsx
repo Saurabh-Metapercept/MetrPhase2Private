@@ -31,8 +31,8 @@ export default function DocPublisher(): JSX.Element {
 
       {/* ================= FORM PAGE ================= */}
       {step === "form" && (
-        <>
-          <div className="w-[768px] mx-auto mb-6">
+        <div className="px-4">
+          <div className="w-full max-w-[768px] mx-auto mb-6">
             <h1 className="text-2xl font-bold text-[#5F4050]">
               DocPublisher
             </h1>
@@ -42,7 +42,7 @@ export default function DocPublisher(): JSX.Element {
             </p>
           </div>
 
-          <div className="w-[768px] mx-auto bg-white rounded-xl border border-gray-200 shadow p-8">
+          <div className="w-full max-w-[768px] mx-auto bg-white rounded-xl border border-gray-200 shadow p-5 sm:p-8">
 
             <h2 className="text-lg font-medium mb-6">
               Add details to proceed with DocPublisher
@@ -86,39 +86,39 @@ export default function DocPublisher(): JSX.Element {
 
               <button
                 onClick={() => setStep("modal")}
-                className="px-8 h-12 bg-[#F5E6ED] rounded-xl text-[#314158]"
+                className="px-8 h-12 bg-[#F5E6ED] rounded-xl text-[#314158] min-h-[44px]"
               >
                 Next →
               </button>
 
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {/* ================= MODAL ================= */}
       {step === "modal" && (
 
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 px-4">
 
-          <div className="w-[512px] bg-white rounded-lg shadow-xl p-8 flex flex-col gap-8">
+          <div className="w-full max-w-[512px] bg-white rounded-lg shadow-xl p-6 sm:p-8 flex flex-col gap-6 sm:gap-8">
 
             <h2 className="text-[20px] font-medium text-center text-[#0F172B]">
               Do you want to style your document before publishing?
             </h2>
 
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
 
               <button
                 onClick={() => setStep("publisher")}
-                className="w-[261px] h-[70px] border rounded text-[#314158]"
+                className="w-full sm:w-[261px] h-[70px] border rounded text-[#314158]"
               >
                 No! Continue with DocPublisher
               </button>
 
               <button
                 onClick={() => setStep("styler")}
-                className="w-[170px] h-[70px] bg-[#5F4050] text-white rounded"
+                className="w-full sm:w-[170px] h-[70px] bg-[#5F4050] text-white rounded"
               >
                 Yes! Let's proceed
               </button>
@@ -131,8 +131,7 @@ export default function DocPublisher(): JSX.Element {
 
       {/* ================= PUBLISHER ================= */}
       {step === "publisher" && (
-
-        <div className="w-[703px] mx-auto">
+        <div className="w-full max-w-[703px] mx-auto px-4">
 
           <h1 className="text-[24px] font-bold text-[#5F4050] mb-6">
             HTML Migration <span className="text-sm">main</span>
@@ -140,7 +139,7 @@ export default function DocPublisher(): JSX.Element {
             DITA-OT Version: 3.6.1
           </h1>
 
-          <div className="bg-white border rounded-xl shadow p-8 space-y-6">
+          <div className="bg-white border rounded-xl shadow p-5 sm:p-8 space-y-6">
 
             <div>
               <label className="font-semibold text-sm">Title *</label>
@@ -160,12 +159,12 @@ export default function DocPublisher(): JSX.Element {
               </label>
 
               <div className="flex gap-10 mt-3">
-                <label className="flex items-center gap-2">
+                <label className="flex items-center gap-2 min-h-[44px]">
                   <input type="radio" defaultChecked />
                   HTML
                 </label>
 
-                <label className="flex items-center gap-2">
+                <label className="flex items-center gap-2 min-h-[44px]">
                   <input type="radio" />
                   PDF
                 </label>
@@ -176,14 +175,14 @@ export default function DocPublisher(): JSX.Element {
 
               <button
                 onClick={() => setStep("form")}
-                className="border px-6 py-2 rounded"
+                className="border px-6 py-2 rounded min-h-[44px]"
               >
                 Cancel
               </button>
 
               <button
                 onClick={handlePublish}
-                className="bg-[#5F4050] text-white px-6 py-2 rounded"
+                className="bg-[#5F4050] text-white px-6 py-2 rounded min-h-[44px]"
               >
                 Publish
               </button>
@@ -196,7 +195,7 @@ export default function DocPublisher(): JSX.Element {
 
       {/* ================= STYLER ================= */}
       {step === "styler" && (
-        <div className="flex justify-center">
+        <div className="px-4">
           {stylerTab === "html" && (
             <HtmlStyler
               onNext={() => setStylerTab("pdf")}
