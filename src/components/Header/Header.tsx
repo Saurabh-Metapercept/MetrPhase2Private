@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Copyright, Menu, X } from 'lucide-react';
+import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Menu, X } from 'lucide-react';
 import logo from '../../assets/metr-logo.png';
 
 interface HeaderProps {
