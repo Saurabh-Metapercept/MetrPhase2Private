@@ -41,7 +41,7 @@ export default function DocEditor(): JSX.Element {
             margin: 1,
           }}
         >
-          Edit and release your documentation using DocEditor
+          Edit and publish your documentation using DocEditor
         </p>
       </div>
 
