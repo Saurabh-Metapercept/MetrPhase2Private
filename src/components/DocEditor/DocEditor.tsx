@@ -1,6 +1,7 @@
 import { useState } from "react";
 import oxygenIcon from "../../assets/Button.png";
 import DefaultEditor from "./DefaultEditor";
+import OxygenEditorButton from "./OxygenEditorButton";
 
 export default function DocEditor(): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<string>("HTML-Migration");
@@ -176,10 +177,10 @@ export default function DocEditor(): JSX.Element {
           >
             Open with default editor
           </button>
-          <img
-            src={oxygenIcon}
-            alt="Open with OxygenXML"
-            style={{ height: "44px", cursor: "pointer", maxWidth: "100%" }}
+          <OxygenEditorButton
+            buttonImage={oxygenIcon}
+            buttonLabel="Open with OxygenXML"
+            defaultOpenMode="tab"
           />
         </div>
       </div>
