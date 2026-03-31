@@ -6,6 +6,9 @@ import CompletionView from './CompletionView';
 import GitHubCommitCard from './GitHubCommitCard';
 import DescriptionModal from './DescriptionModal';
 import SuccessModal from './SuccessModal';
+import StatusModal from '../common/StatusModal';
+import PageHeader from '../common/PageHeader';
+import PageContainer from '../common/PageContainer';
 
 export default function DocMigration() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -21,6 +24,8 @@ export default function DocMigration() {
   const [description, setDescription] = useState('');
   const [selectedProject, setSelectedProject] = useState('New-Docs-Migration');
   const [selectedBranch, setSelectedBranch] = useState('main');
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,9 +53,19 @@ export default function DocMigration() {
       setTimeout(() => {
         setCurrentStage(5);
         setTimeout(() => {
-          setCurrentStage(6);
-          setIsProcessing(false);
-          setIsComplete(true);
+          // Simulate random error for preflight stage
+          const hasError = Math.random() < 0.3; // 30% chance of error
+          
+          if (hasError) {
+            setIsProcessing(false);
+            setErrorMessage('Preflight validation failed. Please check your document format and try again.');
+            setShowErrorModal(true);
+            setCurrentStage(2);
+          } else {
+            setCurrentStage(6);
+            setIsProcessing(false);
+            setIsComplete(true);
+          }
         }, 1500);
       }, 1500);
     }, 1500);
@@ -66,11 +81,11 @@ export default function DocMigration() {
   };
 
   return (
-    <div className="px-40 py-11">
-      <div className="mb-[25px]">
-        <h1 className="font-bold text-2xl text-[#5F4050] leading-[150%]">DocMigration</h1>
-        <p className="text-base text-[#5F4050] leading-[150%]">Migrate documents efficiently</p>
-      </div>
+    <PageContainer>
+      <PageHeader 
+        title="DocMigration" 
+        description="Migrate documents efficiently" 
+      />
 
       {!showGithubCommit && (
         <>
@@ -134,6 +149,19 @@ export default function DocMigration() {
           }}
         />
       )}
-    </div>
+
+      {showErrorModal && (
+        <StatusModal
+          type="error"
+          title="Error Occurred"
+          message={errorMessage}
+          onClose={() => {
+            setShowErrorModal(false);
+            setSelectedFile(null);
+            setPolicyChecked(false);
+          }}
+        />
+      )}
+    </PageContainer>
   );
 }

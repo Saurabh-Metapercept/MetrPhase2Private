@@ -1,51 +1,17 @@
 import { useState } from 'react';
 import { Bell, BarChart2, Table, Activity, ScrollText, MoreVertical, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import projectIcon from '../../assets/Project-Icon.png';
-import releasesIcon from '../../assets/Releases-Icon.png';
-import creditIcon from '../../assets/Credit-Remaining-Icon.png';
-
-const chartData = [
-  { date: '2025-12-01', html5: 12, metrHtml5: 8, metrPdf: 15 },
-  { date: '2025-12-05', html5: 18, metrHtml5: 12, metrPdf: 20 },
-  { date: '2025-12-10', html5: 15, metrHtml5: 18, metrPdf: 25 },
-  { date: '2025-12-15', html5: 22, metrHtml5: 15, metrPdf: 18 },
-];
-
-const tableData = [
-  { date: '2025-12-01', html5: 0, metrHtml5: 0, metrPdf: 0 },
-  { date: '2025-12-05', html5: 0, metrHtml5: 0, metrPdf: 0 },
-  { date: '2025-12-10', html5: 1, metrHtml5: 15, metrPdf: 0.5 },
-  { date: '2025-12-15', html5: 0, metrHtml5: 0, metrPdf: 0 },
-];
-
-const activities = [
-  { project: 'Project Alpha', action: 'Document Migrated', user: 'John Doe', date: '2025-12-15', time: '10:30 AM' },
-  { project: 'Project Beta', action: 'Release Published', user: 'Jane Smith', date: '2025-12-14', time: '03:45 PM' },
-  { project: 'Project Gamma', action: 'Document Edited', user: 'Mike Johnson', date: '2025-12-13', time: '11:20 AM' },
-  { project: 'Project Delta', action: 'Document Created', user: 'Sarah Williams', date: '2025-12-12', time: '09:15 AM' },
-];
-
-const releases = [
-  { title: 'Default Publisher', projectName: 'Docx', outputFormat: 'html5', ditaVersion: '3.6.1', createdAt: '2025-07-07 11:11 AM' },
-  { title: 'Default Publisher of Printer Docx to HTML', projectName: 'Docx', outputFormat: 'html5', ditaVersion: '3.6.1', createdAt: '2025-06-11 12:44 PM' },
-  { title: 'Custom Publisher HTML with changes in Checking paper', projectName: 'Printer', outputFormat: 'metr.html5', ditaVersion: '3.6.1', createdAt: '2025-06-05 3:28 PM' },
-  { title: 'Custom Publisher HTML with changes in Checking paper', projectName: 'Printer', outputFormat: 'metr.html5', ditaVersion: '3.6.1', createdAt: '2025-06-05 3:22 PM' },
-  { title: 'Custom Publisher HTML', projectName: 'Printer', outputFormat: 'metr.pdf', ditaVersion: '3.6.1', createdAt: '2025-06-05 3:14 PM' },
-];
-
-const MetricCard = ({ bgColor, innerBg, icon, label, value, valueColor }: any) => (
-  <div className={`w-[268px] h-[91px] ${bgColor} rounded-[10px] relative overflow-hidden flex items-center`}>
-    <div className={`absolute left-0 w-[193px] h-full ${innerBg} rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10`}>
-      <span className="font-bold text-base text-[#0A0A0A]">{label}</span>
-      <img src={icon} alt={label} className="w-[31px] h-[31px]" />
-    </div>
-    <span className={`font-bold text-2xl ${valueColor} absolute right-4 z-20`}>{value}</span>
-  </div>
-);
+import MetricCard from '../common/MetricCard';
+import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
+import PageContainer from '../common/PageContainer';
+import { CHART_DATA, TABLE_DATA, ACTIVITIES, RELEASES } from '../../constants/dashboardData';
+import projectIcon from '../../assets/Project-icon.svg';
+import releasesIcon from '../../assets/Releases-icon.svg';
+import creditIcon from '../../assets/Credit-Remaining-icon.svg';
 
 const NotificationsCard = () => (
-  <div className="w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative">
+  <div className="w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative flex-shrink-0">
     <div className="absolute top-2 right-2 flex items-center gap-0.5">
       <Bell size={16} className="text-[#314158]" />
       <span className="bg-[#90A1B9] text-white text-[10px] rounded-full px-1">3</span>
@@ -60,13 +26,16 @@ export default function Dashboard() {
   const [viewMode, setViewMode] = useState<'chart' | 'table'>('chart');
 
   return (
-    <div className="px-40 py-11">
-      <h1 className="font-bold text-2xl text-[#5F4050] mb-6">Dashboard</h1>
+    <PageContainer>
+      <PageHeader 
+        title="Dashboard" 
+        description="" 
+      />
 
-      <div className="flex gap-5 mb-6">
+      <div className="flex gap-5 mb-6 w-fit">
         <MetricCard bgColor="bg-[#3EB33E]" innerBg="bg-[#9AF1BA]" icon={projectIcon} label="Projects" value="3" valueColor="text-[#FAEBFF]" />
         <MetricCard bgColor="bg-[#C470E0]" innerBg="bg-[#F2CCFF]" icon={releasesIcon} label="Releases" value="14" valueColor="text-[#FAEBFF]" />
-        <div className="w-[276px] h-[93px] bg-[#FFB153] rounded-[10px] relative overflow-hidden">
+        <div className="w-[276px] h-[93px] bg-[#FFB153] rounded-[10px] relative overflow-hidden flex-shrink-0">
           <div className="absolute left-0 w-[199px] h-full bg-[#FFC989] rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10">
             <span className="font-bold text-base text-[#0A0A0A]">Credits Remaining</span>
             <img src={creditIcon} alt="Credits" className="w-[31px] h-[31px]" />
@@ -110,7 +79,7 @@ export default function Dashboard() {
         </div>
         {viewMode === 'chart' ? (
           <ResponsiveContainer width="100%" height={256}>
-            <LineChart data={chartData} margin={{ top: 5, right: 50, left: 0, bottom: 5 }}>
+            <LineChart data={CHART_DATA} margin={{ top: 5, right: 50, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="4 4" stroke="#5F4050" opacity={0.3} />
               <XAxis dataKey="date" tick={{ fill: '#64748B' }} />
               <YAxis label={{ value: 'Release Count', angle: -90, position: 'insideLeft', fill: '#64748B', style: { textAnchor: 'middle' } }} tick={{ fill: '#64748B' }} />
@@ -138,7 +107,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {tableData.map((row, idx) => (
+                {TABLE_DATA.map((row, idx) => (
                   <tr key={idx} className="border-b border-[#E2E8F0]">
                     <td className="px-4 py-3 text-[#314158] text-sm">{row.date}</td>
                     <td className="px-4 py-3 text-[#314158] text-sm">{row.html5}</td>
@@ -177,7 +146,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {activities.map((activity, idx) => (
+                {ACTIVITIES.map((activity, idx) => (
                   <tr key={idx} className="border-b border-[#F1F5F9]">
                     <td className="px-4 py-3 text-[#0F172A] font-medium">{activity.project}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.action}</td>
@@ -185,9 +154,12 @@ export default function Dashboard() {
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.date}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.time}</td>
                     <td className="px-4 py-3">
-                      <button className="w-7 h-7 rounded-lg border border-[#E2E8F0] flex items-center justify-center hover:bg-gray-50">
-                        <MoreVertical size={14} className="text-[#45556C]" />
-                      </button>
+                      <Button
+                        variant="custom"
+                        size="custom"
+                        className="w-7 h-7 rounded-lg border border-[#E2E8F0] hover:bg-gray-50"
+                        icon={<MoreVertical size={14} className="text-[#45556C]" />}
+                      />
                     </td>
                   </tr>
                 ))}
@@ -206,7 +178,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {releases.map((release, idx) => (
+                {RELEASES.map((release, idx) => (
                   <tr key={idx} className="border-b border-[#F1F5F9]">
                     <td className="px-4 py-3 text-[#0F172A] font-medium">{release.title}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{release.projectName}</td>
@@ -214,9 +186,12 @@ export default function Dashboard() {
                     <td className="px-4 py-3 text-[#45556C] text-base">{release.ditaVersion}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{release.createdAt}</td>
                     <td className="px-4 py-3">
-                      <button className="w-8 h-8 rounded-lg bg-[#5F4050] flex items-center justify-center hover:bg-[#4a3340]">
-                        <Download size={16} className="text-white" />
-                      </button>
+                      <Button
+                        variant="custom"
+                        size="custom"
+                        className="w-8 h-8 rounded-lg bg-[#5F4050] hover:bg-[#4a3340]"
+                        icon={<Download size={16} className="text-white" />}
+                      />
                     </td>
                   </tr>
                 ))}
@@ -225,6 +200,6 @@ export default function Dashboard() {
           )}
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { ArrowLeft, GitBranch, ArrowLeftRight, Info, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { mockFiles, generateDiffContent } from './mockData';
-import unifiedViewIcon from '../../assets/unified-view-icon.png';
-import splitViewIcon from '../../assets/split-view-icon.png';
+import Button from '../common/Button';
+import Select from '../common/Select';
+import { BASE_BRANCHES, TARGET_BRANCHES } from '../../constants/branches';
+import unifiedViewIcon from '../../assets/unified-view-icon.svg';
+import splitViewIcon from '../../assets/split-view-icon.svg';
 
 type CompareState = 'idle' | 'loading' | 'results';
 type ViewMode = 'unified' | 'split';
@@ -46,7 +49,6 @@ export default function CompareBranches() {
         <h1 className="text-2xl font-bold text-[#5F4050]">Compare Branches</h1>
       </div>
 
-      {/* ── Compare box ── */}
       <div className="flex justify-center mb-8">
         <div
           className="bg-white border border-[rgba(226,232,240,0.6)] rounded-[14px] w-[857.7px] h-[74px] flex items-center justify-center px-6"
@@ -55,54 +57,36 @@ export default function CompareBranches() {
           }}
         >
           <div className="flex items-center gap-4">
+            <Select
+              label="Base:"
+              value={baseBranch}
+              onChange={setBaseBranch}
+              options={BASE_BRANCHES}
+              width="w-[200px]"
+              height="h-[38px]"
+            />
 
-            {/* Base */}
-            <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-[#0F172A] whitespace-nowrap">Base:</label>
-              <div className="relative">
-                <select
-                  value={baseBranch}
-                  onChange={(e) => setBaseBranch(e.target.value)}
-                  className="w-[200px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
-                >
-                  <option value="main">main</option>
-                  <option value="dev">dev</option>
-                  <option value="staging">staging</option>
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] pointer-events-none" size={16} />
-              </div>
-            </div>
-
-            {/* Arrow */}
             <ArrowLeftRight size={20} className="text-[#64748B] shrink-0" />
 
-            {/* Target */}
-            <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-[#0F172A] whitespace-nowrap">Target:</label>
-              <div className="relative">
-                <select
-                  value={targetBranch}
-                  onChange={(e) => setTargetBranch(e.target.value)}
-                  className="w-[240px] h-[38px] px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#313144] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]"
-                >
-                  <option value="test_1">test_1</option>
-                  <option value="test_2">test_2</option>
-                  <option value="feature-x">feature-x</option>
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] pointer-events-none" size={16} />
-              </div>
-            </div>
+            <Select
+              label="Target:"
+              value={targetBranch}
+              onChange={setTargetBranch}
+              options={TARGET_BRANCHES}
+              width="w-[240px]"
+              height="h-[38px]"
+            />
 
-            {/* Compare button */}
-            <button
+            <Button
+              variant="custom"
+              size="custom"
+              className="w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               onClick={handleCompare}
               disabled={baseBranch === targetBranch}
-              className="w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] flex items-center justify-center gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+              icon={<GitBranch size={16} />}
             >
-              <GitBranch size={16} />
               Compare
-            </button>
-
+            </Button>
           </div>
         </div>
       </div>
@@ -128,17 +112,21 @@ export default function CompareBranches() {
         <div className="max-w-[1236px] mx-auto">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm text-[#64748B]">Files changed ({mockFiles.length})</h3>
-            <button
+            <Button
+              variant="ghost"
+              size="custom"
+              className="px-4 py-2 text-sm gap-2"
               onClick={() => setViewMode(viewMode === 'unified' ? 'split' : 'unified')}
-              className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#314158] hover:bg-gray-50 flex items-center gap-2"
+              icon={
+                <img
+                  src={viewMode === 'unified' ? splitViewIcon : unifiedViewIcon}
+                  alt={viewMode === 'unified' ? 'Split View' : 'Unified View'}
+                  className="w-4 h-4"
+                />
+              }
             >
-              <img
-                src={viewMode === 'unified' ? splitViewIcon : unifiedViewIcon}
-                alt={viewMode === 'unified' ? 'Split View' : 'Unified View'}
-                className="w-4 h-4"
-              />
               {viewMode === 'unified' ? 'Split View' : 'Unified View'}
-            </button>
+            </Button>
           </div>
 
           <div className="bg-white rounded-lg border border-[#E2E8F0] mb-6">

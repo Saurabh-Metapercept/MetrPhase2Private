@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Copyright } from 'lucide-react';
-import logo from '../../assets/metr-logo.png';
+import { LayoutGrid } from 'lucide-react';
+import { NAV_ITEMS } from '../../constants/navigation';
+import logo from '../../assets/metr-logo.svg';
 
 interface HeaderProps {
   children: ReactNode;
@@ -9,14 +10,6 @@ interface HeaderProps {
 
 export default function Header({ children }: HeaderProps) {
   const location = useLocation();
-
-  const navItems = [
-    { path: '/', label: 'Dashboard', icon: LayoutDashboard },
-    { path: '/doc-migration', label: 'DocMigration', icon: FileCog },
-    { path: '/doc-manager', label: 'DocManager', icon: FolderOpen },
-    { path: '/doc-editor', label: 'DocEditor', icon: FileEdit },
-    { path: '/doc-publisher', label: 'DocPublisher', icon: Send },
-  ];
 
   return (
     <div className="bg-gray-50 min-h-screen font-['Inter']">
@@ -33,7 +26,7 @@ export default function Header({ children }: HeaderProps) {
           </div>
         </div>
         <nav className="border-t border-black/10 flex items-center">
-          {navItems.map(({ path, label, icon: Icon }) => (
+          {NAV_ITEMS.map(({ path, label, icon: Icon }) => (
             <Link
               key={path}
               to={path}

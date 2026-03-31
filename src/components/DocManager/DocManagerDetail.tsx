@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronDown, ChevronRight, File, Folder, GitCompare, Download, ArrowLeft } from 'lucide-react';
+import Button from '../common/Button';
+import Select from '../common/Select';
 
 const projectData: any = {
   html: {
@@ -79,25 +81,32 @@ export default function DocManagerDetail() {
       </div>
 
       <div className="flex items-center gap-4 mb-6">
-        <div className="relative">
-          <select className="w-[200px] h-10 px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#64748B] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]">
-            <option>Choose a branch</option>
-          </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] pointer-events-none" size={16} />
-        </div>
+        <Select
+          value=""
+          onChange={() => {}}
+          options={[{ value: '', label: 'Choose a branch' }]}
+          width="w-[200px]"
+          height="h-10"
+        />
         <button className="text-[#5F4050] text-sm font-medium">+ Create new branch</button>
         <div className="ml-auto flex gap-3">
-          <button 
+          <Button
+            variant="outline"
+            size="custom"
+            className="px-4 py-2 rounded-lg gap-2"
             onClick={() => navigate('/compare-branches')}
-            className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]"
+            icon={<GitCompare size={16} />}
           >
-            <GitCompare size={16} />
             Compare branches
-          </button>
-          <button className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3]">
-            <Download size={16} />
+          </Button>
+          <Button
+            variant="outline"
+            size="custom"
+            className="px-4 py-2 rounded-lg gap-2"
+            icon={<Download size={16} />}
+          >
             Download Source
-          </button>
+          </Button>
         </div>
       </div>
 

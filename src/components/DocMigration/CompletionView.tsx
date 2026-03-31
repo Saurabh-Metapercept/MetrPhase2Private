@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Download, ChevronDown, ChevronRight, File, Folder } from 'lucide-react';
-import githubIcon from '../../assets/github.png';
+import githubIcon from '../../assets/github.svg';
 
 interface CompletionViewProps {
   onGithubClick: () => void;
