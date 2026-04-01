@@ -5,8 +5,8 @@ import Button from "../common/Button";
 import StatusModal from "../common/StatusModal";
 import PageHeader from "../common/PageHeader";
 import PageContainer from "../common/PageContainer";
-import { PROJECTS, GENERAL_BRANCHES } from "../../constants/projects";
-import { GENERAL_BRANCHES as BRANCHES } from "../../constants/branches";
+import { PROJECTS } from "../../constants/projects";
+import { GENERAL_BRANCHES } from "../../constants/branches";
 
 type StepType = "form" | "modal" | "publisher" | "styler";
 type StylerTab = "html" | "pdf";
@@ -19,7 +19,7 @@ export default function DocPublisher(): JSX.Element {
   const [step, setStep] = useState<StepType>("form");
 
   const [stylerTab, setStylerTab] = useState<StylerTab>("html");
-  
+
   const [showStatusModal, setShowStatusModal] = useState(false);
   const [statusType, setStatusType] = useState<'success' | 'error'>('success');
 
@@ -41,28 +41,13 @@ export default function DocPublisher(): JSX.Element {
 
       {/* ================= FORM PAGE ================= */}
       {step === "form" && (
-<<<<<<< HEAD
-        <div className="px-4">
-          <div className="w-full max-w-[768px] mx-auto mb-6">
-            <h1 className="text-2xl font-bold text-[#5F4050]">
-              DocPublisher
-            </h1>
-
-            <p className="text-gray-600">
-              Generate and publish your documentation
-            </p>
-          </div>
-
-          <div className="w-full max-w-[768px] mx-auto bg-white rounded-xl border border-gray-200 shadow p-5 sm:p-8">
-=======
         <PageContainer>
-          <PageHeader 
-            title="DocPublisher" 
-            description="Generate and publish your documentation" 
+          <PageHeader
+            title="DocPublisher"
+            description="Generate and publish your documentation"
           />
 
-          <div className="bg-white rounded-xl border border-gray-200 shadow max-w-[768px] mx-auto p-8">
->>>>>>> upstream/krishnab1
+          <div className="bg-white rounded-xl border border-gray-200 shadow max-w-[768px] mx-auto p-5 sm:p-8">
 
             <h2 className="text-lg font-medium mb-6">
               Add details to proceed with DocPublisher
@@ -80,10 +65,9 @@ export default function DocPublisher(): JSX.Element {
                   onChange={(e) => setSelectedProject(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
-                  <option>DOCX-Migration</option>
-                  <option>HTML-Migration</option>
-                  <option>MD-Migration</option>
-                  <option>New-Docs-Migration</option>
+                  {PROJECTS.map((p) => (
+                    <option key={p.value} value={p.value}>{p.label}</option>
+                  ))}
                 </select>
               </div>
 
@@ -97,33 +81,24 @@ export default function DocPublisher(): JSX.Element {
                   onChange={(e) => setSelectedBranch(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
-                  <option>main</option>
-                  <option>develop</option>
-                  <option>feature/new-layout</option>
-                  <option>Printer</option>
+                  {GENERAL_BRANCHES.map((b) => (
+                    <option key={b.value} value={b.value}>{b.label}</option>
+                  ))}
                 </select>
               </div>
 
               <Button
                 variant="secondary"
                 size="custom"
-                className="px-8 h-12 rounded-xl"
-                onClick={() => setStep("modal")}
-<<<<<<< HEAD
                 className="px-8 h-12 bg-[#F5E6ED] rounded-xl text-[#314158] min-h-[44px]"
-=======
->>>>>>> upstream/krishnab1
+                onClick={() => setStep("modal")}
               >
                 Next →
               </Button>
 
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-=======
         </PageContainer>
->>>>>>> upstream/krishnab1
       )}
 
       {/* ================= MODAL ================= */}
@@ -137,20 +112,13 @@ export default function DocPublisher(): JSX.Element {
               Do you want to style your document before publishing?
             </h2>
 
-<<<<<<< HEAD
             <div className="flex flex-col sm:flex-row justify-center gap-4">
 
-              <button
-                onClick={() => setStep("publisher")}
-                className="w-full sm:w-[261px] h-[70px] border rounded text-[#314158]"
-=======
-            <div className="flex justify-center gap-4">
               <Button
                 variant="ghost"
                 size="custom"
-                className="w-[261px] h-[70px]"
+                className="w-full sm:w-[261px] h-[70px]"
                 onClick={() => setStep("publisher")}
->>>>>>> upstream/krishnab1
               >
                 No! Continue with DocPublisher
               </Button>
@@ -158,12 +126,8 @@ export default function DocPublisher(): JSX.Element {
               <Button
                 variant="primary"
                 size="custom"
-                className="w-[170px] h-[70px]"
-                onClick={() => setStep("styler")}
-<<<<<<< HEAD
                 className="w-full sm:w-[170px] h-[70px] bg-[#5F4050] text-white rounded"
-=======
->>>>>>> upstream/krishnab1
+                onClick={() => setStep("styler")}
               >
                 Yes! Let's proceed
               </Button>
@@ -219,12 +183,8 @@ export default function DocPublisher(): JSX.Element {
               <Button
                 variant="ghost"
                 size="custom"
-                className="px-6 py-2"
-                onClick={() => setStep("form")}
-<<<<<<< HEAD
                 className="border px-6 py-2 rounded min-h-[44px]"
-=======
->>>>>>> upstream/krishnab1
+                onClick={() => setStep("form")}
               >
                 Cancel
               </Button>
@@ -232,12 +192,8 @@ export default function DocPublisher(): JSX.Element {
               <Button
                 variant="primary"
                 size="custom"
-                className="px-6 py-2"
-                onClick={handlePublish}
-<<<<<<< HEAD
                 className="bg-[#5F4050] text-white px-6 py-2 rounded min-h-[44px]"
-=======
->>>>>>> upstream/krishnab1
+                onClick={handlePublish}
               >
                 Publish
               </Button>
@@ -258,7 +214,7 @@ export default function DocPublisher(): JSX.Element {
               onTabSwitch={(tab) => setStylerTab(tab)}
             />
           )}
-          
+
           {stylerTab === "pdf" && (
             <PdfStyler
               onPrevious={() => setStylerTab("html")}

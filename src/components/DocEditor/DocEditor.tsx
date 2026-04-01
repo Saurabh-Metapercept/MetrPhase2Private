@@ -1,8 +1,4 @@
 import { useState } from "react";
-<<<<<<< HEAD
-import oxygenIcon from "../../assets/Button.png";
-=======
->>>>>>> upstream/krishnab1
 import DefaultEditor from "./DefaultEditor";
 import Button from "../common/Button";
 import Input from "../common/Input";
@@ -20,208 +16,39 @@ export default function DocEditor(): JSX.Element {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="py-6 sm:py-11 flex flex-col items-center px-4">
-
-      {/* TOP SECTION */}
-      <div className="w-full max-w-[820px] mb-6">
-        <h1
-          style={{
-            fontFamily: "Inter",
-            fontStyle: "normal",
-            fontWeight: 700,
-            fontSize: "24px",
-            lineHeight: "150%",
-            color: "#5F4050",
-            marginBottom: "4px",
-          }}
-        >
-          DocEditor
-        </h1>
-        <p
-          style={{
-            fontFamily: "Inter",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "20px",
-            lineHeight: "20px",
-            letterSpacing: "-0.150391px",
-            color: "#364153",
-            margin: 1,
-          }}
-        >
-          Edit and publish your documentation using DocEditor
-        </p>
-      </div>
-
-      {/* FORM CARD */}
-      <div
-        style={{
-          boxSizing: "border-box",
-          width: "100%",
-          maxWidth: "672px",
-          background: "#FFFFFF",
-          border: "1px solid #E5E7EB",
-          borderRadius: "4px",
-          padding: "25px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0px",
-        }}
-      >
-        {/* Add details to proceed with DocEditor */}
-        <p
-          style={{
-            fontFamily: "Inter",
-            fontWeight: 400,
-            fontSize: "14px",
-            lineHeight: "20px",
-            letterSpacing: "-0.150391px",
-            color: "#364153",
-            margin: "0 0 20px 0",
-          }}
-        >
-=======
     <PageContainer>
-      <PageHeader 
-        title="DocEditor" 
-        description="Edit and release your documentation using DocEditor" 
+      <PageHeader
+        title="DocEditor"
+        description="Edit and publish your documentation using DocEditor"
       />
 
-      <div className="bg-white border border-[#E2E8F0] rounded-lg shadow-sm max-w-[820px] mx-auto px-14 py-10">
+      <div className="bg-white border border-[#E5E7EB] rounded-lg shadow-sm max-w-[820px] mx-auto px-6 sm:px-14 py-8 sm:py-10">
 
-        <h2 className="text-[16px] font-normal text-[#1E293B] mb-6">
->>>>>>> upstream/krishnab1
+        <p className="text-sm text-[#364153] mb-5">
           Add details to proceed with DocEditor
         </p>
 
-<<<<<<< HEAD
-        {/* Select Project */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "16px" }}>
-          <label
-            style={{
-              fontFamily: "Inter",
-              fontWeight: 500,
-              fontSize: "14px",
-              lineHeight: "20px",
-              letterSpacing: "-0.150391px",
-              color: "#364153",
-            }}
-          >
-            Select Project<span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
+        <div className="flex flex-col gap-4 mb-6">
+          <Input
+            label="Select Project"
+            required
             value={selectedProject}
-            onChange={(e) => setSelectedProject(e.target.value)}
-            style={{
-              boxSizing: "border-box",
-              padding: "8px 12px",
-              width: "100%",
-              height: "38px",
-              background: "#FFFFFF",
-              border: "1px solid #D1D5DC",
-              borderRadius: "4px",
-              fontFamily: "Inter",
-              fontWeight: 400,
-              fontSize: "14px",
-              lineHeight: "20px",
-              letterSpacing: "-0.150391px",
-              color: "#1E2939",
-              outline: "none",
-            }}
+            onChange={setSelectedProject}
           />
-        </div>
 
-        {/* Select Branch */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "24px" }}>
-          <label
-            style={{
-              fontFamily: "Inter",
-              fontWeight: 500,
-              fontSize: "14px",
-              lineHeight: "20px",
-              letterSpacing: "-0.150391px",
-              color: "#364153",
-            }}
-          >
-            Select Branch<span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
+          <Input
+            label="Select Branch"
+            required
             value={selectedBranch}
-            onChange={(e) => setSelectedBranch(e.target.value)}
-            style={{
-              boxSizing: "border-box",
-              padding: "8px 12px",
-              width: "100%",
-              height: "38px",
-              background: "#FFFFFF",
-              border: "1px solid #D1D5DC",
-              borderRadius: "4px",
-              fontFamily: "Inter",
-              fontWeight: 400,
-              fontSize: "14px",
-              lineHeight: "20px",
-              letterSpacing: "-0.150391px",
-              color: "#1E2939",
-              outline: "none",
-            }}
+            onChange={setSelectedBranch}
           />
         </div>
 
-        {/* Buttons row - right aligned */}
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-          <button
-            onClick={() => setShowEditor(true)}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "6px 13px",
-              gap: "10px",
-              width: "185px",
-              height: "44px",
-              background: "#5F4050",
-              borderRadius: "4px",
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "Inter",
-              fontWeight: 500,
-              fontSize: "14px",
-              lineHeight: "20px",
-              letterSpacing: "-0.150391px",
-              color: "#FFFFFF",
-            }}
-          >
-            Open with default editor
-          </button>
-          <img
-            src={oxygenIcon}
-            alt="Open with OxygenXML"
-            style={{ height: "44px", cursor: "pointer", maxWidth: "100%" }}
-          />
-=======
-            <Input
-              label="Select Project"
-              required
-              value={selectedProject}
-              onChange={setSelectedProject}
-            />
-
-            <Input
-              label="Select Branch"
-              required
-              value={selectedBranch}
-              onChange={setSelectedBranch}
-            />
-
-        <div className="flex justify-center items-center gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row justify-end items-center gap-3">
           <Button
             variant="primary"
             size="custom"
-            className="px-7 h-[42px]"
+            className="w-full sm:w-[185px] h-[44px]"
             onClick={() => setShowEditor(true)}
           >
             Open with default editor
@@ -230,13 +57,13 @@ export default function DocEditor(): JSX.Element {
           <Button
             variant="secondary"
             size="custom"
-            className="px-7 h-[42px] gap-2"
+            className="w-full sm:w-auto h-[44px] px-5 gap-2"
             icon={<img src={oxygenXmlIcon} alt="OxygenXML" className="w-5 h-5" />}
           >
             Open with OxygenXML
           </Button>
->>>>>>> upstream/krishnab1
         </div>
+
       </div>
     </PageContainer>
   );
