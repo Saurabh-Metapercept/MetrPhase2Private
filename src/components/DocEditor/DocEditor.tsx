@@ -1,6 +1,14 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import oxygenIcon from "../../assets/Button.png";
+=======
+>>>>>>> upstream/krishnab1
 import DefaultEditor from "./DefaultEditor";
+import Button from "../common/Button";
+import Input from "../common/Input";
+import PageHeader from "../common/PageHeader";
+import PageContainer from "../common/PageContainer";
+import oxygenXmlIcon from "../../assets/Oxygen-XML-logo.svg";
 
 export default function DocEditor(): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<string>("HTML-Migration");
@@ -12,6 +20,7 @@ export default function DocEditor(): JSX.Element {
   }
 
   return (
+<<<<<<< HEAD
     <div className="py-6 sm:py-11 flex flex-col items-center px-4">
 
       {/* TOP SECTION */}
@@ -72,9 +81,21 @@ export default function DocEditor(): JSX.Element {
             margin: "0 0 20px 0",
           }}
         >
+=======
+    <PageContainer>
+      <PageHeader 
+        title="DocEditor" 
+        description="Edit and release your documentation using DocEditor" 
+      />
+
+      <div className="bg-white border border-[#E2E8F0] rounded-lg shadow-sm max-w-[820px] mx-auto px-14 py-10">
+
+        <h2 className="text-[16px] font-normal text-[#1E293B] mb-6">
+>>>>>>> upstream/krishnab1
           Add details to proceed with DocEditor
         </p>
 
+<<<<<<< HEAD
         {/* Select Project */}
         <div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "16px" }}>
           <label
@@ -181,8 +202,42 @@ export default function DocEditor(): JSX.Element {
             alt="Open with OxygenXML"
             style={{ height: "44px", cursor: "pointer", maxWidth: "100%" }}
           />
+=======
+            <Input
+              label="Select Project"
+              required
+              value={selectedProject}
+              onChange={setSelectedProject}
+            />
+
+            <Input
+              label="Select Branch"
+              required
+              value={selectedBranch}
+              onChange={setSelectedBranch}
+            />
+
+        <div className="flex justify-center items-center gap-4 mt-10">
+          <Button
+            variant="primary"
+            size="custom"
+            className="px-7 h-[42px]"
+            onClick={() => setShowEditor(true)}
+          >
+            Open with default editor
+          </Button>
+
+          <Button
+            variant="secondary"
+            size="custom"
+            className="px-7 h-[42px] gap-2"
+            icon={<img src={oxygenXmlIcon} alt="OxygenXML" className="w-5 h-5" />}
+          >
+            Open with OxygenXML
+          </Button>
+>>>>>>> upstream/krishnab1
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

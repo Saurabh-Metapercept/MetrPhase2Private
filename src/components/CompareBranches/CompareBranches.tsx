@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, GitBranch, ArrowLeftRight, Info, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 const mockFiles = [
   { path: 'src/index.ts', additions: 5, deletions: 2 },
   { path: 'src/utils.ts', additions: 3, deletions: 1 },
@@ -16,6 +17,14 @@ function generateDiffContent() {
 }
 import unifiedViewIcon from '../../assets/unified-view-icon.png';
 import splitViewIcon from '../../assets/split-view-icon.png';
+=======
+import { mockFiles, generateDiffContent } from './mockData';
+import Button from '../common/Button';
+import Select from '../common/Select';
+import { BASE_BRANCHES, TARGET_BRANCHES } from '../../constants/branches';
+import unifiedViewIcon from '../../assets/unified-view-icon.svg';
+import splitViewIcon from '../../assets/split-view-icon.svg';
+>>>>>>> upstream/krishnab1
 
 type CompareState = 'idle' | 'loading' | 'results';
 type ViewMode = 'unified' | 'split';
@@ -59,7 +68,6 @@ export default function CompareBranches() {
         <h1 className="text-2xl font-bold text-[#5F4050]">Compare Branches</h1>
       </div>
 
-      {/* ── Compare box ── */}
       <div className="flex justify-center mb-8">
         <div
           className="bg-white border border-[rgba(226,232,240,0.6)] rounded-[14px] w-full max-w-[857.7px] flex items-center justify-center px-4 sm:px-6 py-4 sm:h-[74px]"
@@ -67,6 +75,7 @@ export default function CompareBranches() {
             boxShadow: '0px 1px 3px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1)',
           }}
         >
+<<<<<<< HEAD
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
 
             {/* Base */}
@@ -105,17 +114,43 @@ export default function CompareBranches() {
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] pointer-events-none" size={16} />
               </div>
             </div>
+=======
+          <div className="flex items-center gap-4">
+            <Select
+              label="Base:"
+              value={baseBranch}
+              onChange={setBaseBranch}
+              options={BASE_BRANCHES}
+              width="w-[200px]"
+              height="h-[38px]"
+            />
 
-            {/* Compare button */}
-            <button
+            <ArrowLeftRight size={20} className="text-[#64748B] shrink-0" />
+
+            <Select
+              label="Target:"
+              value={targetBranch}
+              onChange={setTargetBranch}
+              options={TARGET_BRANCHES}
+              width="w-[240px]"
+              height="h-[38px]"
+            />
+>>>>>>> upstream/krishnab1
+
+            <Button
+              variant="custom"
+              size="custom"
+              className="w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               onClick={handleCompare}
               disabled={baseBranch === targetBranch}
+<<<<<<< HEAD
               className="w-full sm:w-[132px] h-[38px] bg-[#5F4050] text-white rounded-[10px] flex items-center justify-center gap-2 hover:bg-[#4a3340] disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap min-h-[44px]"
+=======
+              icon={<GitBranch size={16} />}
+>>>>>>> upstream/krishnab1
             >
-              <GitBranch size={16} />
               Compare
-            </button>
-
+            </Button>
           </div>
         </div>
       </div>
@@ -141,17 +176,25 @@ export default function CompareBranches() {
         <div className="max-w-[1236px] mx-auto">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm text-[#64748B]">Files changed ({mockFiles.length})</h3>
-            <button
+            <Button
+              variant="ghost"
+              size="custom"
+              className="px-4 py-2 text-sm gap-2"
               onClick={() => setViewMode(viewMode === 'unified' ? 'split' : 'unified')}
+<<<<<<< HEAD
               className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#314158] hover:bg-gray-50 flex items-center gap-2 min-h-[44px]"
+=======
+              icon={
+                <img
+                  src={viewMode === 'unified' ? splitViewIcon : unifiedViewIcon}
+                  alt={viewMode === 'unified' ? 'Split View' : 'Unified View'}
+                  className="w-4 h-4"
+                />
+              }
+>>>>>>> upstream/krishnab1
             >
-              <img
-                src={viewMode === 'unified' ? splitViewIcon : unifiedViewIcon}
-                alt={viewMode === 'unified' ? 'Split View' : 'Unified View'}
-                className="w-4 h-4"
-              />
               {viewMode === 'unified' ? 'Split View' : 'Unified View'}
-            </button>
+            </Button>
           </div>
 
           <div className="bg-white rounded-lg border border-[#E2E8F0] mb-6">

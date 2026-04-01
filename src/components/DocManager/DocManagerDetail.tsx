@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronDown, ChevronRight, File, Folder, GitCompare, Download, ArrowLeft } from 'lucide-react';
+import Button from '../common/Button';
+import Select from '../common/Select';
 
 const projectData: any = {
   html: {
@@ -78,6 +80,7 @@ export default function DocManagerDetail() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="relative w-full sm:w-auto">
           <select className="w-full sm:w-[200px] h-10 px-4 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-[#64748B] appearance-none cursor-pointer focus:outline-none focus:border-[#5F4050]">
@@ -90,14 +93,41 @@ export default function DocManagerDetail() {
           <button 
             onClick={() => navigate('/compare-branches')}
             className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3] min-h-[44px]"
+=======
+      <div className="flex items-center gap-4 mb-6">
+        <Select
+          value=""
+          onChange={() => {}}
+          options={[{ value: '', label: 'Choose a branch' }]}
+          width="w-[200px]"
+          height="h-10"
+        />
+        <button className="text-[#5F4050] text-sm font-medium">+ Create new branch</button>
+        <div className="ml-auto flex gap-3">
+          <Button
+            variant="outline"
+            size="custom"
+            className="px-4 py-2 rounded-lg gap-2"
+            onClick={() => navigate('/compare-branches')}
+            icon={<GitCompare size={16} />}
+>>>>>>> upstream/krishnab1
           >
-            <GitCompare size={16} />
             Compare branches
+<<<<<<< HEAD
           </button>
           <button className="px-4 py-2 bg-[#FFF0F7] text-[#5F4050] rounded-lg flex items-center gap-2 hover:bg-[#FFE5F3] min-h-[44px]">
             <Download size={16} />
+=======
+          </Button>
+          <Button
+            variant="outline"
+            size="custom"
+            className="px-4 py-2 rounded-lg gap-2"
+            icon={<Download size={16} />}
+          >
+>>>>>>> upstream/krishnab1
             Download Source
-          </button>
+          </Button>
         </div>
       </div>
 

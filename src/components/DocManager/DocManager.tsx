@@ -1,34 +1,55 @@
 import { Search, RefreshCw, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
-const projects = [
-  { id: 'html', name: 'HTML-Migration', users: 1, status: 'Active' },
-  { id: 'docx', name: 'DOCX-Migration', users: 1, status: 'Active' },
-  { id: 'md', name: 'MD-Migration', users: 1, status: 'Active' },
-];
+import Button from '../common/Button';
+import PageHeader from '../common/PageHeader';
+import PageContainer from '../common/PageContainer';
+import { PROJECT_LIST } from '../../constants/projects';
 
 export default function DocManager() {
   const navigate = useNavigate();
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-[#F8F9FA] px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
       <h1 className="text-[28px] font-bold text-[#5C3D4F] mb-1">DocManager</h1>
       <p className="text-[#6B7C93] text-[15px] mb-6 sm:mb-10">Manage documents efficiently</p>
+=======
+    <PageContainer>
+      <PageHeader 
+        title="DocManager" 
+        description="Manage documents efficiently" 
+      />
+>>>>>>> upstream/krishnab1
 
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6 sm:mb-10">
         <div className="relative w-full sm:w-[384px]">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#C4A8C8]" size={18} />
           <input type="text" placeholder="Search Projects" className="w-full h-[42px] pt-2 pr-4 pb-2 pl-10 bg-[#FFF0F7] border border-[#E8D4E8] rounded-[10px] text-[#64748B] placeholder:text-[#C4A8C8] focus:outline-none" />
         </div>
+<<<<<<< HEAD
         <button className="flex items-center justify-center gap-2 px-6 py-3 bg-[#FFF0F7] text-[#5C3D4F] border border-[#E8D4E8] rounded-xl hover:bg-[#FFE5F3] transition-colors min-h-[44px]">
           <RefreshCw size={16} />
+=======
+        <Button
+          variant="outline"
+          size="custom"
+          className="px-6 py-3 rounded-xl gap-2"
+          icon={<RefreshCw size={16} />}
+        >
+>>>>>>> upstream/krishnab1
           <span className="font-normal text-[15px]">Refresh</span>
-        </button>
+        </Button>
       </div>
 
+<<<<<<< HEAD
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-24 mb-20">
         {projects.map((project) => (
           <div key={project.id} className="bg-white rounded-2xl border border-[#E5E5E5] p-6 w-full lg:w-[351.66px] min-h-[243px] flex flex-col">
+=======
+      <div className="grid grid-cols-3 gap-24 mb-20">
+        {PROJECT_LIST.map((project) => (
+          <div key={project.id} className="bg-white rounded-2xl border border-[#E5E5E5] p-6 w-[351.66px] h-[243px] flex flex-col">
+>>>>>>> upstream/krishnab1
             <div className="flex items-start justify-between mb-5">
               <div className="w-[48px] h-[48px] bg-[#FFF0F7] rounded-xl flex items-center justify-center">
                 <FileText className="text-[#5C3D4F]" size={22} />
@@ -60,6 +81,6 @@ export default function DocManager() {
           <ChevronRight size={18} className="text-[#6B7C93]" />
         </button>
       </div>
-    </div>
+    </PageContainer>
   );
 }
