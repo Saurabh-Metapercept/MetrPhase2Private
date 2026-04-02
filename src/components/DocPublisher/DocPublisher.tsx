@@ -2,6 +2,10 @@ import { useState } from "react";
 import HtmlStyler from "./HtmlStyler";
 import PdfStyler from "./PdfStyler";
 import Button from "../common/Button";
+import Select from "../common/Select";
+import Input from "../common/Input";
+import RadioGroup from "../common/RadioGroup";
+import FormField from "../common/FormField";
 import StatusModal from "../common/StatusModal";
 import PageHeader from "../common/PageHeader";
 import PageContainer from "../common/PageContainer";
@@ -15,6 +19,9 @@ export default function DocPublisher(): JSX.Element {
 
   const [selectedProject, setSelectedProject] = useState<string>("New-Docs-Migration");
   const [selectedBranch, setSelectedBranch] = useState<string>("Printer");
+  const [title, setTitle] = useState<string>("");
+  const [ditamap, setDitamap] = useState<string>("");
+  const [outputFormat, setOutputFormat] = useState<string>("html");
 
   const [step, setStep] = useState<StepType>("form");
 
@@ -54,14 +61,10 @@ export default function DocPublisher(): JSX.Element {
             </h2>
 
             <div className="space-y-6">
-
-              <div>
-                <label className="text-sm font-medium">
-                  Select Project <span className="text-red-500">*</span>
-                </label>
-
-                <select
+              <FormField label="Select Project" required>
+                <Select
                   value={selectedProject}
+<<<<<<< HEAD
                   onChange={(e) => setSelectedProject(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
@@ -70,14 +73,20 @@ export default function DocPublisher(): JSX.Element {
                   ))}
                 </select>
               </div>
+=======
+                  onChange={setSelectedProject}
+                  options={PROJECTS}
+                  width="w-full"
+                  height="h-[50px]"
+                  className="rounded-xl"
+                />
+              </FormField>
+>>>>>>> upstream/krishnab1
 
-              <div>
-                <label className="text-sm font-medium">
-                  Select Branch <span className="text-red-500">*</span>
-                </label>
-
-                <select
+              <FormField label="Select Branch" required>
+                <Select
                   value={selectedBranch}
+<<<<<<< HEAD
                   onChange={(e) => setSelectedBranch(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
@@ -86,6 +95,15 @@ export default function DocPublisher(): JSX.Element {
                   ))}
                 </select>
               </div>
+=======
+                  onChange={setSelectedBranch}
+                  options={GENERAL_BRANCHES}
+                  width="w-full"
+                  height="h-[50px]"
+                  className="rounded-xl"
+                />
+              </FormField>
+>>>>>>> upstream/krishnab1
 
               <Button
                 variant="secondary"
@@ -147,13 +165,30 @@ export default function DocPublisher(): JSX.Element {
             DITA-OT Version: 3.6.1
           </h1>
 
+<<<<<<< HEAD
           <div className="bg-white border rounded-xl shadow p-5 sm:p-8 space-y-6">
+=======
+          <div className="bg-white border rounded-xl shadow p-8 space-y-6">
+            <Input
+              label="Title"
+              required
+              value={title}
+              onChange={setTitle}
+              height="h-[50px]"
+              className="rounded-lg"
+            />
+>>>>>>> upstream/krishnab1
 
-            <div>
-              <label className="font-semibold text-sm">Title *</label>
-              <input className="w-full border rounded-lg h-[50px] px-4 mt-2" />
-            </div>
+            <Input
+              label="Input Source Ditamap"
+              required
+              value={ditamap}
+              onChange={setDitamap}
+              height="h-[50px]"
+              className="rounded-lg"
+            />
 
+<<<<<<< HEAD
             <div>
               <label className="font-semibold text-sm">
                 Input Source Ditamap *
@@ -178,6 +213,19 @@ export default function DocPublisher(): JSX.Element {
                 </label>
               </div>
             </div>
+=======
+            <RadioGroup
+              label="Output Format"
+              required
+              name="outputFormat"
+              options={[
+                { value: 'html', label: 'HTML' },
+                { value: 'pdf', label: 'PDF' }
+              ]}
+              value={outputFormat}
+              onChange={setOutputFormat}
+            />
+>>>>>>> upstream/krishnab1
 
             <div className="flex justify-end gap-3 pt-6">
               <Button

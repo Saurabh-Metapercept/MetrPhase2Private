@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bell, BarChart2, Table, Activity, ScrollText, MoreVertical, Download } from 'lucide-react';
+import { Bell, BarChart2, Table as TableIcon, Activity, ScrollText } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 <<<<<<< HEAD
 import projectIcon from '../../assets/Project-Icon.png';
@@ -49,10 +49,11 @@ const NotificationsCard = () => (
   <div className="w-full sm:w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative">
 =======
 import MetricCard from '../common/MetricCard';
-import Button from '../common/Button';
+import Table from '../common/Table';
 import PageHeader from '../common/PageHeader';
 import PageContainer from '../common/PageContainer';
 import { CHART_DATA, TABLE_DATA, ACTIVITIES, RELEASES } from '../../constants/dashboardData';
+import { ACTIVITY_COLUMNS, RELEASE_COLUMNS } from '../../constants/tableColumns';
 import projectIcon from '../../assets/Project-icon.svg';
 import releasesIcon from '../../assets/Releases-icon.svg';
 import creditIcon from '../../assets/Credit-Remaining-icon.svg';
@@ -129,8 +130,13 @@ export default function Dashboard() {
                 <BarChart2 size={14} />
                 Chart
               </button>
+<<<<<<< HEAD
               <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1 min-h-[36px]`}>
                 <Table size={14} />
+=======
+              <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1`}>
+                <TableIcon size={14} />
+>>>>>>> upstream/krishnab1
                 Table
               </button>
             </div>
@@ -193,6 +199,7 @@ export default function Dashboard() {
         </div>
         <div className="px-2 sm:px-6 pb-6 overflow-x-auto">
           {activeTab === 'activities' ? (
+<<<<<<< HEAD
             <table className="w-full border-collapse min-w-[600px]">
               <thead>
                 <tr>
@@ -262,6 +269,11 @@ export default function Dashboard() {
                 ))}
               </tbody>
             </table>
+=======
+            <Table columns={ACTIVITY_COLUMNS} data={ACTIVITIES} />
+          ) : (
+            <Table columns={RELEASE_COLUMNS} data={RELEASES} />
+>>>>>>> upstream/krishnab1
           )}
         </div>
       </div>

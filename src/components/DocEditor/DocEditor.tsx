@@ -60,7 +60,7 @@ export default function DocEditor(): JSX.Element {
             className="w-full sm:w-auto h-[44px] px-5 gap-2"
             icon={<img src={oxygenXmlIcon} alt="OxygenXML" className="w-5 h-5" />}
           >
-            Open with OxygenXML
+            Open with OxygenXML Web Author
           </Button>
         </div>
 

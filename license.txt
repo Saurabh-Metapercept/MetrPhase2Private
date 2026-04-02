@@ -1,0 +1,11 @@
+------START-LICENSE-KEY------
+Registration_Name=Metapercept DEVELOPMENT
+Company=Metapercept
+Category=Professional-Floating
+Component=Web-Author, Diff-Srv, Conc, AI-Positron, Git
+Version=28
+Number_of_Licenses=5
+Date=03-31-2026
+Trial=61
+SGN=MCwCFDkuIr3vJ+SaW8ftG4hoia0bXazzAhQ4a1NydKsjzUe0V6eNs3gz8qdIGQ\=\=
+-------END-LICENSE-KEY-------
