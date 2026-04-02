@@ -1,9 +1,7 @@
 import { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-<<<<<<< HEAD
 import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Menu, X } from 'lucide-react';
 import logo from '../../assets/metr-logo.png';
-=======
 import { LayoutGrid } from 'lucide-react';
 import { NAV_ITEMS } from '../../constants/navigation';
 import logo from '../../assets/metr-logo.svg';
@@ -39,10 +37,8 @@ export default function Header({ children }: HeaderProps) {
             </button>
           </div>
         </div>
-<<<<<<< HEAD
         <nav className="border-t border-black/10 hidden lg:flex items-center">
           {navItems.map(({ path, label, icon: Icon }) => (
-=======
         <nav className="border-t border-black/10 flex items-center">
           {NAV_ITEMS.map(({ path, label, icon: Icon }) => (
 >>>>>>> upstream/krishnab1

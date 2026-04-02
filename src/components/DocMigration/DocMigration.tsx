@@ -81,13 +81,11 @@ export default function DocMigration() {
   };
 
   return (
-<<<<<<< HEAD
     <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
       <div className="mb-[25px]">
         <h1 className="font-bold text-2xl text-[#5F4050] leading-[150%]">DocMigration</h1>
         <p className="text-base text-[#5F4050] leading-[150%]">Migrate documents efficiently</p>
       </div>
-=======
     <PageContainer>
       <PageHeader 
         title="DocMigration" 

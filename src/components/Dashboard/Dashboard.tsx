@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Bell, BarChart2, Table as TableIcon, Activity, ScrollText } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-<<<<<<< HEAD
 import projectIcon from '../../assets/Project-Icon.png';
 import releasesIcon from '../../assets/Releases-Icon.png';
 import creditIcon from '../../assets/Credit-Remaining-Icon.png';
@@ -47,7 +46,6 @@ const MetricCard = ({ bgColor, innerBg, icon, label, value, valueColor }: any) =
 
 const NotificationsCard = () => (
   <div className="w-full sm:w-[220px] h-[91px] bg-white border border-black/10 rounded-[10px] p-3 relative">
-=======
 import MetricCard from '../common/MetricCard';
 import Table from '../common/Table';
 import PageHeader from '../common/PageHeader';
@@ -75,7 +73,6 @@ export default function Dashboard() {
   const [viewMode, setViewMode] = useState<'chart' | 'table'>('chart');
 
   return (
-<<<<<<< HEAD
     <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
       <h1 className="font-bold text-2xl text-[#5F4050] mb-6">Dashboard</h1>
 
@@ -84,7 +81,6 @@ export default function Dashboard() {
         <MetricCard bgColor="bg-[#C470E0]" innerBg="bg-[#F2CCFF]" icon={releasesIcon} label="Releases" value="14" valueColor="text-[#FAEBFF]" />
         <div className="w-full xl:w-[276px] h-[93px] bg-[#FFB153] rounded-[10px] relative overflow-hidden">
           <div className="absolute left-0 w-[72%] sm:w-[199px] h-full bg-[#FFC989] rounded-[10px] flex flex-col justify-center px-4 gap-1 z-10">
-=======
     <PageContainer>
       <PageHeader 
         title="Dashboard" 
@@ -130,10 +126,8 @@ export default function Dashboard() {
                 <BarChart2 size={14} />
                 Chart
               </button>
-<<<<<<< HEAD
               <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1 min-h-[36px]`}>
                 <Table size={14} />
-=======
               <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1`}>
                 <TableIcon size={14} />
 >>>>>>> upstream/krishnab1
@@ -199,7 +193,6 @@ export default function Dashboard() {
         </div>
         <div className="px-2 sm:px-6 pb-6 overflow-x-auto">
           {activeTab === 'activities' ? (
-<<<<<<< HEAD
             <table className="w-full border-collapse min-w-[600px]">
               <thead>
                 <tr>
@@ -220,11 +213,9 @@ export default function Dashboard() {
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.date}</td>
                     <td className="px-4 py-3 text-[#45556C] text-base">{activity.time}</td>
                     <td className="px-4 py-3">
-<<<<<<< HEAD
                       <button className="w-8 h-8 min-w-[44px] min-h-[44px] rounded-lg border border-[#E2E8F0] flex items-center justify-center hover:bg-gray-50">
                         <MoreVertical size={14} className="text-[#45556C]" />
                       </button>
-=======
                       <Button
                         variant="custom"
                         size="custom"
@@ -269,11 +260,9 @@ export default function Dashboard() {
                 ))}
               </tbody>
             </table>
-=======
             <Table columns={ACTIVITY_COLUMNS} data={ACTIVITIES} />
           ) : (
             <Table columns={RELEASE_COLUMNS} data={RELEASES} />
->>>>>>> upstream/krishnab1
           )}
         </div>
       </div>

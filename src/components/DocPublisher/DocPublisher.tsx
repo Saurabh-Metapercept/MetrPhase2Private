@@ -64,7 +64,6 @@ export default function DocPublisher(): JSX.Element {
               <FormField label="Select Project" required>
                 <Select
                   value={selectedProject}
-<<<<<<< HEAD
                   onChange={(e) => setSelectedProject(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
@@ -73,7 +72,6 @@ export default function DocPublisher(): JSX.Element {
                   ))}
                 </select>
               </div>
-=======
                   onChange={setSelectedProject}
                   options={PROJECTS}
                   width="w-full"
@@ -86,7 +84,6 @@ export default function DocPublisher(): JSX.Element {
               <FormField label="Select Branch" required>
                 <Select
                   value={selectedBranch}
-<<<<<<< HEAD
                   onChange={(e) => setSelectedBranch(e.target.value)}
                   className="w-full mt-2 h-[50px] border rounded-xl px-4"
                 >
@@ -95,7 +92,6 @@ export default function DocPublisher(): JSX.Element {
                   ))}
                 </select>
               </div>
-=======
                   onChange={setSelectedBranch}
                   options={GENERAL_BRANCHES}
                   width="w-full"
@@ -165,9 +161,7 @@ export default function DocPublisher(): JSX.Element {
             DITA-OT Version: 3.6.1
           </h1>
 
-<<<<<<< HEAD
           <div className="bg-white border rounded-xl shadow p-5 sm:p-8 space-y-6">
-=======
           <div className="bg-white border rounded-xl shadow p-8 space-y-6">
             <Input
               label="Title"
@@ -188,7 +182,6 @@ export default function DocPublisher(): JSX.Element {
               className="rounded-lg"
             />
 
-<<<<<<< HEAD
             <div>
               <label className="font-semibold text-sm">
                 Input Source Ditamap *
@@ -213,7 +206,6 @@ export default function DocPublisher(): JSX.Element {
                 </label>
               </div>
             </div>
-=======
             <RadioGroup
               label="Output Format"
               required
