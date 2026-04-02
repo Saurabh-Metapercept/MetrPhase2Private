@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Bell, BarChart2, Table, Activity, ScrollText, MoreVertical, Download } from 'lucide-react';
+import { Bell, BarChart2, Table as TableIcon, Activity, ScrollText } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import MetricCard from '../common/MetricCard';
-import Button from '../common/Button';
+import Table from '../common/Table';
 import PageHeader from '../common/PageHeader';
 import PageContainer from '../common/PageContainer';
 import { CHART_DATA, TABLE_DATA, ACTIVITIES, RELEASES } from '../../constants/dashboardData';
+import { ACTIVITY_COLUMNS, RELEASE_COLUMNS } from '../../constants/tableColumns';
 import projectIcon from '../../assets/Project-icon.svg';
 import releasesIcon from '../../assets/Releases-icon.svg';
 import creditIcon from '../../assets/Credit-Remaining-icon.svg';
@@ -71,7 +72,7 @@ export default function Dashboard() {
                 Chart
               </button>
               <button onClick={() => setViewMode('table')} className={`${viewMode === 'table' ? 'bg-white shadow text-[#0F172B]' : 'text-[#62748E]'} rounded-lg px-3 py-1 text-sm flex items-center gap-1`}>
-                <Table size={14} />
+                <TableIcon size={14} />
                 Table
               </button>
             </div>
@@ -134,69 +135,9 @@ export default function Dashboard() {
         </div>
         <div className="px-6 pb-6">
           {activeTab === 'activities' ? (
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Project Name</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Action</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">User</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Date</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Time</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ACTIVITIES.map((activity, idx) => (
-                  <tr key={idx} className="border-b border-[#F1F5F9]">
-                    <td className="px-4 py-3 text-[#0F172A] font-medium">{activity.project}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{activity.action}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{activity.user}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{activity.date}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{activity.time}</td>
-                    <td className="px-4 py-3">
-                      <Button
-                        variant="custom"
-                        size="custom"
-                        className="w-7 h-7 rounded-lg border border-[#E2E8F0] hover:bg-gray-50"
-                        icon={<MoreVertical size={14} className="text-[#45556C]" />}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <Table columns={ACTIVITY_COLUMNS} data={ACTIVITIES} />
           ) : (
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Release Title</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Project Name</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Output Format</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">DITA OT Version</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Created At</th>
-                  <th className="font-bold text-base text-[#314158] px-4 py-3 border-b border-[#E2E8F0] text-left">Download</th>
-                </tr>
-              </thead>
-              <tbody>
-                {RELEASES.map((release, idx) => (
-                  <tr key={idx} className="border-b border-[#F1F5F9]">
-                    <td className="px-4 py-3 text-[#0F172A] font-medium">{release.title}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{release.projectName}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{release.outputFormat}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{release.ditaVersion}</td>
-                    <td className="px-4 py-3 text-[#45556C] text-base">{release.createdAt}</td>
-                    <td className="px-4 py-3">
-                      <Button
-                        variant="custom"
-                        size="custom"
-                        className="w-8 h-8 rounded-lg bg-[#5F4050] hover:bg-[#4a3340]"
-                        icon={<Download size={16} className="text-white" />}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <Table columns={RELEASE_COLUMNS} data={RELEASES} />
           )}
         </div>
       </div>
