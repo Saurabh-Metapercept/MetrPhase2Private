@@ -2,18 +2,22 @@ import { useEffect, useRef, useState } from "react";
 
 const OXYGEN_BASE_URL = import.meta.env.VITE_OXYGEN_URL || "http://localhost:8080";
 const OXYGEN_EDITOR_PATH = "/oxygen-xml-web-author/app/oxygen.html";
+const OXYGEN_PROXY_PATH = "/oxygen-xml-web-author/app/oxygen.html";
 
 interface OxygenEditorProps {
   onBack: () => void;
+  githubFileUrl?: string; // e.g. "github://owner/repo/branch/path/to/file.xml"
 }
 
-export default function OxygenEditor({ onBack }: OxygenEditorProps) {
+export default function OxygenEditor({ onBack, githubFileUrl }: OxygenEditorProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const oxygenUrl = OXYGEN_EDITOR_PATH;
   const oxygenDirectUrl = `${OXYGEN_BASE_URL}${OXYGEN_EDITOR_PATH}`;
+  const iframeSrc = githubFileUrl
+    ? `${OXYGEN_PROXY_PATH}?url=${encodeURIComponent(githubFileUrl)}`
+    : OXYGEN_PROXY_PATH;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,7 +69,7 @@ export default function OxygenEditor({ onBack }: OxygenEditorProps) {
         {!error && (
           <iframe
             ref={iframeRef}
-            src={oxygenUrl}
+            src={iframeSrc}
             className="w-full h-full border-0"
             title="Oxygen XML Web Author"
             onLoad={() => setLoading(false)}

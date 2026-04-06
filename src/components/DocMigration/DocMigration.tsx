@@ -27,7 +27,6 @@ export default function DocMigration() {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -47,15 +46,14 @@ export default function DocMigration() {
     if (!selectedFile) return;
     setIsProcessing(true);
     setCurrentStage(3);
-    
+
     setTimeout(() => {
       setCurrentStage(4);
       setTimeout(() => {
         setCurrentStage(5);
         setTimeout(() => {
-          // Simulate random error for preflight stage
-          const hasError = Math.random() < 0.3; // 30% chance of error
-          
+          const hasError = Math.random() < 0.3;
+
           if (hasError) {
             setIsProcessing(false);
             setErrorMessage('Preflight validation failed. Please check your document format and try again.');
@@ -81,17 +79,11 @@ export default function DocMigration() {
   };
 
   return (
-    <div className="px-4 sm:px-10 lg:px-40 py-6 lg:py-11">
-      <div className="mb-[25px]">
-        <h1 className="font-bold text-2xl text-[#5F4050] leading-[150%]">DocMigration</h1>
-        <p className="text-base text-[#5F4050] leading-[150%]">Migrate documents efficiently</p>
-      </div>
     <PageContainer>
-      <PageHeader 
-        title="DocMigration" 
-        description="Migrate documents efficiently" 
+      <PageHeader
+        title="DocMigration"
+        description="Migrate documents efficiently"
       />
->>>>>>> upstream/krishnab1
 
       {!showGithubCommit && (
         <>

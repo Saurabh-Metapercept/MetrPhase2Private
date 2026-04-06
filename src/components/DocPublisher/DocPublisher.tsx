@@ -22,22 +22,13 @@ export default function DocPublisher(): JSX.Element {
   const [title, setTitle] = useState<string>("");
   const [ditamap, setDitamap] = useState<string>("");
   const [outputFormat, setOutputFormat] = useState<string>("html");
-
   const [step, setStep] = useState<StepType>("form");
-
   const [stylerTab, setStylerTab] = useState<StylerTab>("html");
-
   const [showStatusModal, setShowStatusModal] = useState(false);
   const [statusType, setStatusType] = useState<'success' | 'error'>('success');
 
-  const handleReset = () => {
-    alert("Fields Reset");
-  };
-
-  const handleSubmit = () => {
-    alert("Styler Submitted");
-  };
-
+  const handleReset = () => { alert("Fields Reset"); };
+  const handleSubmit = () => { alert("Styler Submitted"); };
   const handlePublish = () => {
     setStatusType('success');
     setShowStatusModal(true);
@@ -53,25 +44,14 @@ export default function DocPublisher(): JSX.Element {
             title="DocPublisher"
             description="Generate and publish your documentation"
           />
-
           <div className="bg-white rounded-xl border border-gray-200 shadow max-w-[768px] mx-auto p-5 sm:p-8">
-
             <h2 className="text-lg font-medium mb-6">
               Add details to proceed with DocPublisher
             </h2>
-
             <div className="space-y-6">
               <FormField label="Select Project" required>
                 <Select
                   value={selectedProject}
-                  onChange={(e) => setSelectedProject(e.target.value)}
-                  className="w-full mt-2 h-[50px] border rounded-xl px-4"
-                >
-                  {PROJECTS.map((p) => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
-                  ))}
-                </select>
-              </div>
                   onChange={setSelectedProject}
                   options={PROJECTS}
                   width="w-full"
@@ -79,19 +59,10 @@ export default function DocPublisher(): JSX.Element {
                   className="rounded-xl"
                 />
               </FormField>
->>>>>>> upstream/krishnab1
 
               <FormField label="Select Branch" required>
                 <Select
                   value={selectedBranch}
-                  onChange={(e) => setSelectedBranch(e.target.value)}
-                  className="w-full mt-2 h-[50px] border rounded-xl px-4"
-                >
-                  {GENERAL_BRANCHES.map((b) => (
-                    <option key={b.value} value={b.value}>{b.label}</option>
-                  ))}
-                </select>
-              </div>
                   onChange={setSelectedBranch}
                   options={GENERAL_BRANCHES}
                   width="w-full"
@@ -99,7 +70,6 @@ export default function DocPublisher(): JSX.Element {
                   className="rounded-xl"
                 />
               </FormField>
->>>>>>> upstream/krishnab1
 
               <Button
                 variant="secondary"
@@ -109,7 +79,6 @@ export default function DocPublisher(): JSX.Element {
               >
                 Next →
               </Button>
-
             </div>
           </div>
         </PageContainer>
@@ -117,17 +86,12 @@ export default function DocPublisher(): JSX.Element {
 
       {/* ================= MODAL ================= */}
       {step === "modal" && (
-
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 px-4">
-
           <div className="w-full max-w-[512px] bg-white rounded-lg shadow-xl p-6 sm:p-8 flex flex-col gap-6 sm:gap-8">
-
             <h2 className="text-[20px] font-medium text-center text-[#0F172B]">
               Do you want to style your document before publishing?
             </h2>
-
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-
               <Button
                 variant="ghost"
                 size="custom"
@@ -136,7 +100,6 @@ export default function DocPublisher(): JSX.Element {
               >
                 No! Continue with DocPublisher
               </Button>
-
               <Button
                 variant="primary"
                 size="custom"
@@ -146,7 +109,6 @@ export default function DocPublisher(): JSX.Element {
                 Yes! Let's proceed
               </Button>
             </div>
-
           </div>
         </div>
       )}
@@ -154,15 +116,12 @@ export default function DocPublisher(): JSX.Element {
       {/* ================= PUBLISHER ================= */}
       {step === "publisher" && (
         <div className="w-full max-w-[703px] mx-auto px-4">
-
           <h1 className="text-[24px] font-bold text-[#5F4050] mb-6">
             HTML Migration <span className="text-sm">main</span>
             <br />
             DITA-OT Version: 3.6.1
           </h1>
-
           <div className="bg-white border rounded-xl shadow p-5 sm:p-8 space-y-6">
-          <div className="bg-white border rounded-xl shadow p-8 space-y-6">
             <Input
               label="Title"
               required
@@ -171,8 +130,6 @@ export default function DocPublisher(): JSX.Element {
               height="h-[50px]"
               className="rounded-lg"
             />
->>>>>>> upstream/krishnab1
-
             <Input
               label="Input Source Ditamap"
               required
@@ -181,31 +138,6 @@ export default function DocPublisher(): JSX.Element {
               height="h-[50px]"
               className="rounded-lg"
             />
-
-            <div>
-              <label className="font-semibold text-sm">
-                Input Source Ditamap *
-              </label>
-              <input className="w-full border rounded-lg h-[50px] px-4 mt-2" />
-            </div>
-
-            <div>
-              <label className="font-semibold text-sm">
-                Output Format *
-              </label>
-
-              <div className="flex gap-10 mt-3">
-                <label className="flex items-center gap-2 min-h-[44px]">
-                  <input type="radio" defaultChecked />
-                  HTML
-                </label>
-
-                <label className="flex items-center gap-2 min-h-[44px]">
-                  <input type="radio" />
-                  PDF
-                </label>
-              </div>
-            </div>
             <RadioGroup
               label="Output Format"
               required
@@ -217,8 +149,6 @@ export default function DocPublisher(): JSX.Element {
               value={outputFormat}
               onChange={setOutputFormat}
             />
->>>>>>> upstream/krishnab1
-
             <div className="flex justify-end gap-3 pt-6">
               <Button
                 variant="ghost"
@@ -228,7 +158,6 @@ export default function DocPublisher(): JSX.Element {
               >
                 Cancel
               </Button>
-
               <Button
                 variant="primary"
                 size="custom"
@@ -238,7 +167,6 @@ export default function DocPublisher(): JSX.Element {
                 Publish
               </Button>
             </div>
-
           </div>
         </div>
       )}
@@ -254,7 +182,6 @@ export default function DocPublisher(): JSX.Element {
               onTabSwitch={(tab) => setStylerTab(tab)}
             />
           )}
-
           {stylerTab === "pdf" && (
             <PdfStyler
               onPrevious={() => setStylerTab("html")}
@@ -273,9 +200,7 @@ export default function DocPublisher(): JSX.Element {
           message="Your publication has been successfully completed!"
           onClose={() => {
             setShowStatusModal(false);
-            if (statusType === 'success') {
-              setStep('form');
-            }
+            if (statusType === 'success') { setStep('form'); }
           }}
         />
       )}

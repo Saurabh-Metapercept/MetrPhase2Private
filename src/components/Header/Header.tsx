@@ -1,11 +1,8 @@
 import { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, LayoutDashboard, FileCog, FolderOpen, FileEdit, Send, Menu, X } from 'lucide-react';
-import logo from '../../assets/metr-logo.png';
-import { LayoutGrid } from 'lucide-react';
+import { LayoutGrid, Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '../../constants/navigation';
 import logo from '../../assets/metr-logo.svg';
->>>>>>> upstream/krishnab1
 
 interface HeaderProps {
   children: ReactNode;
@@ -38,10 +35,7 @@ export default function Header({ children }: HeaderProps) {
           </div>
         </div>
         <nav className="border-t border-black/10 hidden lg:flex items-center">
-          {navItems.map(({ path, label, icon: Icon }) => (
-        <nav className="border-t border-black/10 flex items-center">
           {NAV_ITEMS.map(({ path, label, icon: Icon }) => (
->>>>>>> upstream/krishnab1
             <Link
               key={path}
               to={path}
@@ -58,7 +52,7 @@ export default function Header({ children }: HeaderProps) {
         </nav>
         {mobileMenuOpen && (
           <nav className="lg:hidden border-t border-black/10 pb-2">
-            {navItems.map(({ path, label, icon: Icon }) => (
+            {NAV_ITEMS.map(({ path, label, icon: Icon }) => (
               <Link
                 key={path}
                 to={path}
